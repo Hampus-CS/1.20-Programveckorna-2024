@@ -1,7 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public Rigidbody2D rb;
     public LayerMask mask;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed += ((Input.GetAxisRaw("Horizontal") * 4f) - speed) * 0.035f;
+        speed = 0f;
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         {
             grounded = false;
         }
-
+        /*
         if (Input.GetKeyUp("w") && grounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 15f);
@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
             sprite.GetComponent<Scale>().scale_x = 0.25f;
             sprite.GetComponent<Scale>().scale_y = 2f;
         }
+        */
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
