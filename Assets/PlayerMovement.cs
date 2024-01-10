@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem dust;
     public GameObject slash;
     public Transform id;
+    public GameObject screen_shake;
+    float flip;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         speed += ((Input.GetAxisRaw("Horizontal") * 4f) - speed) * 0.035f;
+
+        float mouse_side = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        mouse_side = Mathf.Clamp(mouse_side, -1, 1);
+        if (mouse_side != -1 && mouse_side != 1) mouse_side = 1;
+
+        if (mouse_side != 0) flip = mouse_side;
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
@@ -43,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
             grounded = false;
         }
 
-        if (Input.GetKeyUp("w") && grounded)
+        if (Input.GetKeyDown("w") && grounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 15f);
 
@@ -51,10 +59,11 @@ public class PlayerMovement : MonoBehaviour
             sprite.GetComponent<Scale>().scale_y = 2f;
         }
 
-        if(Input.GetKeyUp("e"))
+        if(Input.GetMouseButtonDown(0))
         {
             GameObject d = Instantiate(slash, transform.position, Quaternion.identity);
             d.GetComponent<SlashCode>().creator = id;
+            d.GetComponent<SlashCode>().flip = flip;
         }
     }
 

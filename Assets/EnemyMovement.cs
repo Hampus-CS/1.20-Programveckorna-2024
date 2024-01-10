@@ -8,6 +8,13 @@ public class EnemyMovement : MonoBehaviour
     bool grounded = false;
     float speed = 0f;
     public ParticleSystem dust;
+    float flash = 0f;
+    public GameObject id;
+    public GameObject screen_shake;
+    public GameObject player;
+
+    int hp = 5;
+    bool hit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +25,13 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed = 0f;
+        flash--;
+        flash = Mathf.Clamp(flash, 0, 100f);
+
+        float playerSide = (player.transform.position.x - transform.position.x);
+        playerSide = Mathf.Clamp(playerSide, -1, 1);
+
+        speed += ((2f * playerSide) - speed) * 0.1f;
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
@@ -47,10 +60,23 @@ public class EnemyMovement : MonoBehaviour
             sprite.GetComponent<Scale>().scale_y = 2f;
         }
         */
+
+        if (flash > 0f)
+        {
+            sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0f);
+        }
+        else
+        {
+            sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 1f);
+
+            hit = false;
+        }
+
+        if (hp <= 0) Destroy(id);
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Attack")
+        if(collision.tag == "Attack" && hit == false)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+5f);
 
@@ -58,6 +84,15 @@ public class EnemyMovement : MonoBehaviour
 
             sprite.GetComponent<Scale>().scale_x = 0.25f;
             sprite.GetComponent<Scale>().scale_y = 2f;
+
+            hp--;
+
+            speed = -speed * 50f;
+
+            flash = 30f;
+            hit = true;
+
+            screen_shake.GetComponent<CameraCode>().shake = 2f;
         }
     }
 }
