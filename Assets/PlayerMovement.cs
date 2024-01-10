@@ -1,4 +1,3 @@
-using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,7 +7,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject sprite;
     bool grounded = false;
     float speed = 0f;
-    public ParticleSystem dust;
 
     // Start is called before the first frame update
     void Start()
@@ -29,8 +27,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 sprite.GetComponent<Scale>().scale_x = 2f;
                 sprite.GetComponent<Scale>().scale_y = 0.25f;
-
-                Instantiate(dust, transform.position, quaternion.identity);
             }
 
             grounded = true;
