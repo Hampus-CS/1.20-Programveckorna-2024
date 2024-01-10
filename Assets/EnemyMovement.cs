@@ -48,9 +48,16 @@ public class EnemyMovement : MonoBehaviour
         }
         */
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Attack")
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+5f);
 
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 5f);
+
+            sprite.GetComponent<Scale>().scale_x = 0.25f;
+            sprite.GetComponent<Scale>().scale_y = 2f;
+        }
     }
 }

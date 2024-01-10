@@ -1,3 +1,5 @@
+using System.Security.Claims;
+using System.Security.Principal;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -8,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     bool grounded = false;
     float speed = 0f;
     public ParticleSystem dust;
+    public GameObject slash;
+    public Transform id;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +49,12 @@ public class PlayerMovement : MonoBehaviour
 
             sprite.GetComponent<Scale>().scale_x = 0.25f;
             sprite.GetComponent<Scale>().scale_y = 2f;
+        }
+
+        if(Input.GetKeyUp("e"))
+        {
+            GameObject d = Instantiate(slash, transform.position, Quaternion.identity);
+            d.GetComponent<SlashCode>().creator = id;
         }
     }
 
