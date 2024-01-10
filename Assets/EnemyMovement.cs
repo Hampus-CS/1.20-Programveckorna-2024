@@ -12,6 +12,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject id;
     public GameObject screen_shake;
     public GameObject player;
+    public GameObject flash_sprite;
 
     int hp = 5;
     bool hit = false;
@@ -63,11 +64,11 @@ public class EnemyMovement : MonoBehaviour
 
         if (flash > 0f)
         {
-            sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0f);
+            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
         }
         else
         {
-            sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 1f);
+            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0f);
 
             hit = false;
         }

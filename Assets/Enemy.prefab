@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13382656547961856}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 5660590084789090456}
   - component: {fileID: 7077349356503925040}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6087203512557589379}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -362,3 +362,7 @@ MonoBehaviour:
     m_Bits: 8
   sprite: {fileID: 13382656547961856}
   dust: {fileID: 8250486125507471486, guid: 700684d84063277408208d372c8349be, type: 3}
+  id: {fileID: 8392846869750273752}
+  screen_shake: {fileID: 0}
+  player: {fileID: 0}
+  flash_sprite: {fileID: 6087203512557589379}
