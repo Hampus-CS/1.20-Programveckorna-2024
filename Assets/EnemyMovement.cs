@@ -64,11 +64,11 @@ public class EnemyMovement : MonoBehaviour
 
         if (flash > 0f)
         {
-            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 1f);
+            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0f);
         }
         else
         {
-            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 255f, 255f, 0f);
+            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 1f);
 
             hit = false;
         }
@@ -93,7 +93,7 @@ public class EnemyMovement : MonoBehaviour
             flash = 30f;
             hit = true;
 
-            screen_shake.GetComponent<CameraCode>().shake = 2f;
+            screen_shake.GetComponent<CameraController>().shake = 15f;
         }
     }
 }
