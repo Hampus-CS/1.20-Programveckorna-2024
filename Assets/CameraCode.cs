@@ -15,6 +15,6 @@ public class CameraCode : MonoBehaviour
     {
         shake += (0f - shake) * 0.1f;
 
-        transform.position = new Vector3(0f + Random.Range(-shake, shake), 1f + Random.Range(-shake, shake), -10f);
+        transform.position = new Vector2(0f + Random.Range(-shake, shake), 1f + Random.Range(-shake, shake));
     }
 }

@@ -13,6 +13,8 @@ public class CameraController : MonoBehaviour
 
     public Vector3 positionOffset;
 
+    public float shake = 0f;
+
     private void Awake()
     {
         
@@ -20,11 +22,18 @@ public class CameraController : MonoBehaviour
     
     }
 
+    private void Start()
+    {
+        shake = 5f;
+    }
+
     private void LateUpdate()
     {
-        
-        Vector3 targetPosition = target.position+positionOffset;
-        transform.position=Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);    
+
+        shake += (0f - shake) * 0.1f;
+
+        Vector3 targetPosition = target.position+ positionOffset + new Vector3(0f + Random.Range(-shake, shake), 0f + Random.Range(-shake, shake), 0f); ;
+        transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     
     }
 

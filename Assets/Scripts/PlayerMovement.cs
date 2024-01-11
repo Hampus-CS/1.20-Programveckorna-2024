@@ -7,6 +7,11 @@ public class PlayerMovement : MonoBehaviour
     public GameObject sprite;
     bool grounded = false;
     float speed = 0f;
+    public ParticleSystem dust;
+    public GameObject slash;
+    public Transform id;
+    public GameObject screen_shake;
+    float flip;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +24,12 @@ public class PlayerMovement : MonoBehaviour
     {
         speed += ((Input.GetAxisRaw("Horizontal") * 4f) - speed) * 0.035f;
 
+        float mouse_side = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        mouse_side = Mathf.Clamp(mouse_side, -1, 1);
+        if (mouse_side != -1 && mouse_side != 1) mouse_side = 1;
+
+        if (mouse_side != 0) flip = mouse_side;
+
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
         if (Physics2D.Raycast(transform.position, Vector2.down, 0.25f, mask))
@@ -27,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 sprite.GetComponent<Scale>().scale_x = 2f;
                 sprite.GetComponent<Scale>().scale_y = 0.25f;
+
+                Instantiate(dust, transform.position, Quaternion.identity);
             }
 
             grounded = true;
@@ -36,12 +49,19 @@ public class PlayerMovement : MonoBehaviour
             grounded = false;
         }
 
-        if (Input.GetKeyUp("w") && grounded)
+        if (Input.GetKeyDown("w") && grounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 15f);
 
             sprite.GetComponent<Scale>().scale_x = 0.25f;
             sprite.GetComponent<Scale>().scale_y = 2f;
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            GameObject d = Instantiate(slash, transform.position, Quaternion.identity);
+            d.GetComponent<SlashCode>().creator = id;
+            d.GetComponent<SlashCode>().flip = flip;
         }
     }
 
