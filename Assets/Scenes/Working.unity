@@ -2973,6 +2973,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8392846869750273752, guid: 5ad74a3336d891f40a60cbaa09b9f70a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9052129083529006923, guid: 5ad74a3336d891f40a60cbaa09b9f70a, type: 3}
       propertyPath: player
       value: 
@@ -3446,12 +3450,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5423869867256275896, guid: 171c8167c609a1c49888b39da72de6c3, type: 3}
+      propertyPath: mask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423869867256275896, guid: 171c8167c609a1c49888b39da72de6c3, type: 3}
+      propertyPath: GMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423869867256275896, guid: 171c8167c609a1c49888b39da72de6c3, type: 3}
       propertyPath: screen_shake
       value: 
       objectReference: {fileID: 102356349}
     - target: {fileID: 8426220812161059463, guid: 171c8167c609a1c49888b39da72de6c3, type: 3}
       propertyPath: m_Name
       value: Player Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 8426220812161059463, guid: 171c8167c609a1c49888b39da72de6c3, type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8875821712647644162, guid: 171c8167c609a1c49888b39da72de6c3, type: 3}
       propertyPath: m_Sprite

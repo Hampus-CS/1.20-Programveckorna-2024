@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -13,12 +14,16 @@ public class PlayerMovement : MonoBehaviour
     public GameObject screen_shake;
     float flip;
     public int Grounds = 0;
-    LayerMask GMask;
+    public LayerMask GMask;
+    [SerializeField,Range(0, 5)]
+    float raycastLength = 0.5f;
+    Transform TheT;
 
     // Start is called before the first frame update
     void Start()
     {
-        GMask = LayerMask.NameToLayer("Ground");
+        //GMask = LayerMask.NameToLayer("Ground");
+        TheT = gameObject.GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -34,19 +39,29 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
-
+       
 
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log(Physics.Raycast(new Vector3(id.position.x, id.position.y - 1, id.position.z), Vector3.down, 5f));
-            Debug.Log(Physics.Raycast(new Vector3(id.position.x + 0.6f, id.position.y - 1, id.position.z), Vector3.down, 5f, GMask));
-            Debug.Log(Physics.Raycast(new Vector3(id.position.x - 0.6f, id.position.y - 1, id.position.z), Vector3.down, 5f, GMask));
+            //Debug.Log(Physics.Raycast(new Vector2(TheT.position.x, TheT.position.y - 1), Vector2.down, 5f, GMask));
+            //Debug.Log(Physics.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y - 1), Vector2.down, 5f, GMask));
+            //Debug.Log(Physics.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y - 1), Vector2.down, 5f, GMask));
+         
+
+            RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y - 1), Vector2.down, raycastLength, GMask);
+            RaycastHit2D hitC = Physics2D.Raycast(new Vector2(TheT.position.x, TheT.position.y - 1), Vector2.down, raycastLength, GMask);
+            RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y - 1), Vector2.down, raycastLength, GMask);
+
             
-            if (Physics.Raycast(new Vector3(id.position.x, id.position.y - 1, id.position.z), Vector3.down, 0.2f, GMask) || Physics.Raycast(new Vector3(id.position.x + 0.6f, id.position.y - 1, id.position.z), Vector3.down, 0.2f, GMask) || Physics.Raycast(new Vector3(id.position.x - 0.6f, id.position.y - 1, id.position.z), Vector3.down, 0.2f, GMask))
+            if (hitL.collider != null || hitC.collider != null || hitR.collider != null)
             {
+                Debug.Log(hitL.collider.gameObject.name);
+                //Debug.Log(hitL.collider.gameObject.name);
+                print("hopp");
                 rb.velocity = new Vector2(rb.velocity.x, 15f);
             }
+
         }
 
         if (Input.GetMouseButtonDown(0))
