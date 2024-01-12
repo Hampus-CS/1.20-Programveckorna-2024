@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -5,18 +6,19 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public LayerMask mask;
     public GameObject sprite;
-    bool grounded = false;
     float speed = 0f;
     public ParticleSystem dust;
     public GameObject slash;
     public Transform id;
     public GameObject screen_shake;
     float flip;
+    public int Grounds = 0;
+    LayerMask GMask;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        GMask = LayerMask.NameToLayer("Ground");
     }
 
     // Update is called once per frame
@@ -32,41 +34,26 @@ public class PlayerMovement : MonoBehaviour
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
 
-        if (Physics2D.Raycast(transform.position, Vector2.down, 0.25f, mask))
+
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (grounded == false)
+            Debug.Log(Physics.Raycast(new Vector3(id.position.x, id.position.y - 1, id.position.z), Vector3.down, 5f));
+            Debug.Log(Physics.Raycast(new Vector3(id.position.x + 0.6f, id.position.y - 1, id.position.z), Vector3.down, 5f, GMask));
+            Debug.Log(Physics.Raycast(new Vector3(id.position.x - 0.6f, id.position.y - 1, id.position.z), Vector3.down, 5f, GMask));
+            
+            if (Physics.Raycast(new Vector3(id.position.x, id.position.y - 1, id.position.z), Vector3.down, 0.2f, GMask) || Physics.Raycast(new Vector3(id.position.x + 0.6f, id.position.y - 1, id.position.z), Vector3.down, 0.2f, GMask) || Physics.Raycast(new Vector3(id.position.x - 0.6f, id.position.y - 1, id.position.z), Vector3.down, 0.2f, GMask))
             {
-                sprite.GetComponent<Scale>().scale_x = 2f;
-                sprite.GetComponent<Scale>().scale_y = 0.25f;
-
-                Instantiate(dust, transform.position, Quaternion.identity);
+                rb.velocity = new Vector2(rb.velocity.x, 15f);
             }
-
-            grounded = true;
-        }
-        else
-        {
-            grounded = false;
-        }
-
-        if (Input.GetKeyDown("w") && grounded)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 15f);
-
-            sprite.GetComponent<Scale>().scale_x = 0.25f;
-            sprite.GetComponent<Scale>().scale_y = 2f;
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject d = Instantiate(slash, transform.position, Quaternion.identity);
-            d.GetComponent<SlashCode>().creator = id;
-            d.GetComponent<SlashCode>().flip = flip;
+            GameObject Attack = Instantiate(slash, transform.position, Quaternion.identity);
+            Attack.GetComponent<SlashCode>().creator = id;
+            Attack.GetComponent<SlashCode>().flip = flip;
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
     }
 }
