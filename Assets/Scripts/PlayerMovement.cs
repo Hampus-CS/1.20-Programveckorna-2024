@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown("w") && grounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 15f);
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 13f);
 
             sprite.GetComponent<Scale>().scale_x = 0.25f;
             sprite.GetComponent<Scale>().scale_y = 2f;
