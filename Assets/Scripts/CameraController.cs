@@ -15,6 +15,8 @@ public class CameraController : MonoBehaviour
 
     public float shake = 0f;
 
+    private bool isTargetAlive = true;
+
     private void Awake()
     {
         
@@ -29,9 +31,23 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
+        
+        // Check if the target is destroyed
+        if (target == null)
+        {
+            isTargetAlive = false;
+        }
 
+        // If the target is destroyed, stop updating the camera's position
+        if (!isTargetAlive)
+        {
+            return;
+        }
+
+        // Screen Shake
         shake += (0f - shake) * 0.1f;
 
+        // Camera following the player with SmoothDamp
         Vector3 targetPosition = target.position+ positionOffset + new Vector3(0f + Random.Range(-shake, shake), 0f + Random.Range(-shake, shake), 0f); ;
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     

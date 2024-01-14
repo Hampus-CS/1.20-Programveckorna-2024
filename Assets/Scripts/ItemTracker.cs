@@ -6,6 +6,7 @@ public class ItemTracker : MonoBehaviour
 {
     //CurrentItemID är variabeln som används för att hålla koll på vilket item spelaren håller i.
     public static int CurrentItemID;
+    public static int CurrentItemDurability = 0;
     //Item ID list: 
     //Fists: 0
     //Bat: 1
@@ -17,9 +18,6 @@ public class ItemTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            Debug.Log(CurrentItemID);
-        }
+
     }
 }
