@@ -109,6 +109,7 @@ MonoBehaviour:
   dust: {fileID: 8250486125507471486, guid: ab5b9007df483d34a8b84c48b7a59e69, type: 3}
   slash: {fileID: 6044987603750454644, guid: eb4797a34edcb7b42805cdb769359da8, type: 3}
   Punch: {fileID: 7542384016247775821, guid: 2fe45c0f59e486447b8ae552e5e816c6, type: 3}
+  BatSwing: {fileID: 7542384016247775821, guid: 13ead164eb70f4644865bbd25733a817, type: 3}
   id: {fileID: 2894982493982733164}
   screen_shake: {fileID: 0}
   Grounds: 0
@@ -117,6 +118,7 @@ MonoBehaviour:
     m_Bits: 8
   PlayerSpeed: 8
   PlayerJumpHeight: 10
+  TheSR: {fileID: 8875821712647644162}
 --- !u!50 &8412447954102632886
 Rigidbody2D:
   serializedVersion: 4

@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     int State;
     int PunchTimer;
     public static int PlayerHealth;
+    [SerializeField] SpriteRenderer TheSR;
     //States:
     //0: Nothing specific, can move around
     //1: Currently Attacking
@@ -88,22 +89,22 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (MouseRightOfPlayer)
                 {
-                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 0.6f, transform.position.y), Quaternion.identity);
+                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y), Quaternion.identity);
                 }
                 else
                 {
-                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 0.6f, transform.position.y), Quaternion.identity);
+                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y), Quaternion.identity);
                 }
             }
             if (ItemTracker.CurrentItemID == 1)
             {
                 if (MouseRightOfPlayer)
                 {
-                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.1f, transform.position.y), Quaternion.identity);
+                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y), Quaternion.identity);
                 }
                 else
                 {
-                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.1f, transform.position.y), Quaternion.identity);
+                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y), Quaternion.identity);
                 }
                 ItemTracker.CurrentItemDurability--;
                 if (ItemTracker.CurrentItemDurability <= 0)
@@ -122,11 +123,13 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetMouseButton(1) && IsGrounded())
             {
                 State = 2;
+                TheSR.color = new Color(1, 0, 0);
 
             }
             else
             {
                 State = 0;
+                TheSR.color = new Color(1, 1, 1);
             }
         }
 

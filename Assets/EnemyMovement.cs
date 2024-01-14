@@ -17,10 +17,14 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float EnemySpeed;
     [SerializeField] Transform TheT;
     [SerializeField] GameObject Punch;
+    [SerializeField] GameObject BatSwing;
     [SerializeField] SpriteRenderer TheSR;
     bool PunchDirRight;
     int PunchTimer = 0;
     int state = 0;
+    Color[] EColors = { new Color(0, 0.7f, 0.1f), new Color(0.4f, 0.7f, 0) };
+    
+    [SerializeField] int ItemID;
     //States:
     //0: Idle
     //1: Fighting
@@ -32,7 +36,7 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        TheSR.color = EColors[ItemID];
     }
 
     // Update is called once per frame
@@ -76,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            TheSR.color = new Color(0, 1, 0);
+            TheSR.color = EColors[ItemID];
         }
     }
     //void OnTriggerEnter2D(Collider2D collision)
@@ -112,31 +116,70 @@ public class EnemyMovement : MonoBehaviour
         {
             if (hitL.collider != null)
             {
-                if (hitL.distance <= 0.5)
+                if (ItemID == 0)
                 {
-                    PunchDirRight = false;
-                    state = 2;
-                    PunchTimer = 40;
+                    if (hitL.distance <= 0.8)
+                    {
+                        PunchDirRight = false;
+                        state = 2;
+                        PunchTimer = 40;
+                    }
+                    else
+                    {
+                        speed = -1;
+                        state = 1;
+                    }
                 }
-                else
+                else if (ItemID == 1)
                 {
-                    speed = -1;
-                    state = 1;
+                    if (hitL.distance <= 1.5)
+                    {
+                        PunchDirRight = false;
+                        state = 2;
+                        PunchTimer = 40;
+                    }
+                    else
+                    {
+                        speed = -1;
+                        state = 1;
+                    }
                 }
+                
+                
+                
             }
             else if (hitR.collider != null)
             {
-                if (hitR.distance <= 0.5)
+                if (ItemID == 0)
                 {
-                    PunchDirRight = true;
-                    state = 2;
-                    PunchTimer = 40;
+                    if (hitR.distance <= 0.8)
+                    {
+                        PunchDirRight = true;
+                        state = 2;
+                        PunchTimer = 40;
+                    }
+                    else
+                    {
+                        speed = 1;
+                        state = 1;
+                    }
                 }
-                else
+                else if (ItemID == 1)
                 {
-                    speed = 1;
-                    state = 1;
+                    if (hitL.distance <= 1.5)
+                    {
+                        PunchDirRight = true;
+                        state = 2;
+                        PunchTimer = 40;
+                    }
+                    else
+                    {
+                        speed = -1;
+                        state = 1;
+                    }
                 }
+
+                
             }
             else
             {
@@ -151,13 +194,28 @@ public class EnemyMovement : MonoBehaviour
             {
                 state = 3;
                 PunchTimer = 30;
+                
                 if (PunchDirRight)
                 {
-                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 0.6f, transform.position.y), Quaternion.identity);
+                    if(ItemID == 0)
+                    {
+                        GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y), Quaternion.identity);
+                    }
+                    else if (ItemID == 1)
+                    {
+                        GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y), Quaternion.identity);
+                    }
                 }
                 else
                 {
-                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 0.6f, transform.position.y), Quaternion.identity);
+                    if (ItemID == 0)
+                    {
+                        GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y), Quaternion.identity);
+                    }
+                    else if (ItemID == 1)
+                    {
+                        GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y), Quaternion.identity);
+                    }
                 }
             }
         }
