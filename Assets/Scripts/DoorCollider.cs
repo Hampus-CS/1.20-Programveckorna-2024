@@ -9,7 +9,6 @@ public class DoorCollider : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<RoomTeleporter>().isNearDoor = true;
-            Debug.Log("isNearDoor=true");
         }
     }
 
@@ -18,7 +17,6 @@ public class DoorCollider : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<RoomTeleporter>().isNearDoor = false;
-            Debug.Log("isNearDoor=false");
         }
     }
 }

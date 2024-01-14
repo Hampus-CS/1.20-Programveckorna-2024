@@ -26,8 +26,8 @@ public class EnemyMovement : MonoBehaviour
     //1: Fighting
     //2: Winding Attack
     //3: Attacking
-    int hp = 3;
-    bool hit = false;
+    public int hp = 3;
+    //bool hit = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +38,7 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        flash--;
-        flash = Mathf.Clamp(flash, 0, 100f);
+        
 
         //float playerSide = (player.transform.position.x - transform.position.x);
         //playerSide = Mathf.Clamp(playerSide, -1, 1);
@@ -67,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
         {
             flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 1f);
 
-            hit = false;
+            //hit = false;
         }
 
         if (hp <= 0) Destroy(id);
@@ -80,30 +79,32 @@ public class EnemyMovement : MonoBehaviour
             TheSR.color = new Color(0, 1, 0);
         }
     }
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Attack" && hit == false)
-        {
+    //void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //   if(collision.tag == "Attack" && hit == false)
+    //    {
             //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+5f);
 
             //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 5f);
 
-            sprite.GetComponent<Scale>().scale_x = 0.25f;
-            sprite.GetComponent<Scale>().scale_y = 2f;
+            //sprite.GetComponent<Scale>().scale_x = 0.25f;
+            //sprite.GetComponent<Scale>().scale_y = 2f;
 
-            hp--;
+    //        hp--;
 
             //speed = -speed * 50f;
 
-            flash = 30f;
-            hit = true;
+    //        flash = 30f;
+    //        hit = true;
 
-            screen_shake.GetComponent<CameraController>().shake = 15f;
-        }
-    }
+    //        screen_shake.GetComponent<CameraController>().shake = 15f;
+    //    }
+    //}
 
     private void FixedUpdate()
     {
+        flash--;
+        flash = Mathf.Clamp(flash, 0, 100f);
         RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y), Vector2.left, 5, PMask);
         RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y), Vector2.right, 5, PMask);
         speed = 0;

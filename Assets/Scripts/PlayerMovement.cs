@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public ParticleSystem dust;
     public GameObject slash;
     [SerializeField] GameObject Punch;
+    [SerializeField] GameObject BatSwing;
     public Transform id;
     public GameObject screen_shake;
     float flip;
@@ -23,9 +24,11 @@ public class PlayerMovement : MonoBehaviour
     bool MouseRightOfPlayer;
     int State;
     int PunchTimer;
+    public static int PlayerHealth;
     //States:
     //0: Nothing specific, can move around
-    //1: Currently Punching
+    //1: Currently Attacking
+    //2: Currently Blocking
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +36,17 @@ public class PlayerMovement : MonoBehaviour
         //GMask = LayerMask.NameToLayer("Ground");
         TheT = gameObject.GetComponent<Transform>();
         State = 0;
+        PlayerHealth = 3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        speed = 0;
+        if (PlayerHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+            speed = 0;
         if (Input.GetKey(KeyCode.D) && State == 0)
         {
             speed++;
@@ -76,21 +84,55 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && State == 0 && IsGrounded())
         {
-            
-            if(MouseRightOfPlayer)
+            if (ItemTracker.CurrentItemID == 0)
             {
-                GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 0.6f, transform.position.y), Quaternion.identity);
+                if (MouseRightOfPlayer)
+                {
+                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 0.6f, transform.position.y), Quaternion.identity);
+                }
+                else
+                {
+                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 0.6f, transform.position.y), Quaternion.identity);
+                }
             }
-            else
+            if (ItemTracker.CurrentItemID == 1)
             {
-                GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 0.6f, transform.position.y), Quaternion.identity);
+                if (MouseRightOfPlayer)
+                {
+                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.1f, transform.position.y), Quaternion.identity);
+                }
+                else
+                {
+                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.1f, transform.position.y), Quaternion.identity);
+                }
+                ItemTracker.CurrentItemDurability--;
+                if (ItemTracker.CurrentItemDurability <= 0)
+                {
+                    ItemTracker.CurrentItemID = 0;
+                }
             }
-            
             State = 1;
             PunchTimer = 15;
             //Attack.GetComponent<SlashCode>().creator = id;
             //Attack.GetComponent<SlashCode>().flip = flip;
         }
+
+        if (State == 0 || State == 2)
+        {
+            if (Input.GetMouseButton(1) && IsGrounded())
+            {
+                State = 2;
+
+            }
+            else
+            {
+                State = 0;
+            }
+        }
+
+        
+
+        
     }
     private void FixedUpdate()
     {
@@ -117,5 +159,44 @@ public class PlayerMovement : MonoBehaviour
         {
             return false;
         }
+    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.tag == "EnemyAttack")
+    //    {
+    //        PlayerHealth--;
+    //        if(PlayerHealth <= 0)
+    //        {
+    //            Destroy(gameObject);
+    //        }
+    //    }
+    //
+    public int BlockDamage(int Dmg)
+    {
+        if (State == 2)
+        {
+            if(ItemTracker.CurrentItemID == 0)
+            {
+                return Dmg-1;
+            }
+            else if(ItemTracker.CurrentItemID == 1)
+            {
+                ItemTracker.CurrentItemDurability --;
+                if (ItemTracker.CurrentItemDurability <= 0)
+                {
+                    ItemTracker.CurrentItemID = 0;
+                }
+                return Dmg - 2;
+            }
+            else
+            {
+                return Dmg;
+            }
+        }
+        else
+        {
+            return Dmg;
+        }
+        
     }
 }

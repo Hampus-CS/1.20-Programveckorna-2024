@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Punch : MonoBehaviour
+public class BatSwing : MonoBehaviour
 {
     float Timer = 15f;
     Transform TheT;
@@ -13,17 +13,17 @@ public class Punch : MonoBehaviour
     {
         EMask = LayerMask.GetMask("Enemy");
         TheT = gameObject.GetComponent<Transform>();
-        HitEnemies = Physics2D.BoxCastAll(TheT.position, new Vector2(1, 1), 0f, new Vector2(1, 0), 0f, EMask);
+        HitEnemies = Physics2D.BoxCastAll(TheT.position, new Vector2(2, 1), 0f, new Vector2(1, 0), 0f, EMask);
         for (int i = 0; i < HitEnemies.Length; i++)
         {
-            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().hp--;
+            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().hp -= 2;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void FixedUpdate()

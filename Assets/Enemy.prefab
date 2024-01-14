@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2927128728792982065}
   - component: {fileID: 541454636521021395}
-  - component: {fileID: 1481779015749199586}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -85,20 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1481779015749199586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13382656547961856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 805d433af3a3dfc4ca2d2458bfeb187f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scale_x: 1
-  scale_y: 1
 --- !u!1 &6087203512557589379
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5660590084789090456}
   - component: {fileID: 7077349356503925040}
+  - component: {fileID: 3716003926422667707}
   m_Layer: 0
   m_Name: Flash
   m_TagString: Untagged
@@ -184,6 +170,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3716003926422667707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6087203512557589379}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805d433af3a3dfc4ca2d2458bfeb187f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale_x: 1
+  scale_y: 1
 --- !u!1 &8392846869750273752
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 5180109534010616017}
   - component: {fileID: 5430578387435514051}
   - component: {fileID: 9052129083529006923}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -360,14 +360,17 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
-  sprite: {fileID: 13382656547961856}
+  sprite: {fileID: 6087203512557589379}
   dust: {fileID: 8250486125507471486, guid: ab5b9007df483d34a8b84c48b7a59e69, type: 3}
   id: {fileID: 8392846869750273752}
   screen_shake: {fileID: 0}
   player: {fileID: 0}
-  flash_sprite: {fileID: 6087203512557589379}
+  flash_sprite: {fileID: 13382656547961856}
   PMask:
     serializedVersion: 2
     m_Bits: 64
   EnemySpeed: 4
   TheT: {fileID: 3522218991201523747}
+  Punch: {fileID: 7542384016247775821, guid: c2bdd47717cfe844fa918274cce6670d, type: 3}
+  TheSR: {fileID: 8105220826590650279}
+  hp: 3
