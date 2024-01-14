@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8105220826590650279}
   - component: {fileID: 5180109534010616017}
   - component: {fileID: 5430578387435514051}
-  - component: {fileID: 9052129083529006923}
+  - component: {fileID: 3856224590615906349}
   m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
@@ -160,7 +160,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &9052129083529006923
+--- !u!114 &3856224590615906349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8392846869750273752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ecf9424d84d0ce4b952693a66806a5e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5a64fb1801f1e194ebd587604ad619f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 5180109534010616017}
@@ -184,7 +184,7 @@ MonoBehaviour:
   flash_sprite: {fileID: 13382656547961856}
   PMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   EnemySpeed: 4
   TheT: {fileID: 3522218991201523747}
   Punch: {fileID: 7542384016247775821, guid: c2bdd47717cfe844fa918274cce6670d, type: 3}

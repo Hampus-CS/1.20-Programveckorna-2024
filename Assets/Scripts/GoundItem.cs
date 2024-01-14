@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class GoundItemScript : MonoBehaviour
+public class GoundItem : MonoBehaviour
 {
     bool PlayerOnItem = false;
     SpriteRenderer TheSR;
@@ -28,7 +27,7 @@ public class GoundItemScript : MonoBehaviour
                 ItemTracker.CurrentItemDurability = 2;
             }
         }
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,4 +46,5 @@ public class GoundItemScript : MonoBehaviour
             TheSR.color = new Color(1, 1, 1);
         }
     }
+
 }
