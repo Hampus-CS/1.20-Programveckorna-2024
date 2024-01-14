@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class GoundItemScript : MonoBehaviour
+public class GoundItem : MonoBehaviour
 {
     bool PlayerOnItem = false;
     SpriteRenderer TheSR;
+    int ThisItemID;
+    //IDs:
+    //1: Bat
     void Start()
     {
         TheSR = gameObject.GetComponent<SpriteRenderer>();
+        ThisItemID = 1;
     }
 
     // Update is called once per frame
@@ -18,9 +21,13 @@ public class GoundItemScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && PlayerOnItem)
         {
             Destroy(gameObject);
-            ItemTracker.CurrentItemID = 1;
+            ItemTracker.CurrentItemID = ThisItemID;
+            if (ItemTracker.CurrentItemID == 1)
+            {
+                ItemTracker.CurrentItemDurability = 2;
+            }
         }
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -39,4 +46,5 @@ public class GoundItemScript : MonoBehaviour
             TheSR.color = new Color(1, 1, 1);
         }
     }
+
 }
