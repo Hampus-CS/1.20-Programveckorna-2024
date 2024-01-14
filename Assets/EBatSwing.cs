@@ -6,7 +6,7 @@ public class EBatSwing : MonoBehaviour
 {
     // Start is called before the first frame update
     Transform TheT;
-    float Timer = 30f;
+    float Timer = 50f;
     RaycastHit2D[] HitPlayer;
     LayerMask PMask;
     // Start is called before the first frame update

@@ -90,10 +90,12 @@ public class PlayerMovement : MonoBehaviour
                 if (MouseRightOfPlayer)
                 {
                     GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y), Quaternion.identity);
+                    PunchTimer = 15;
                 }
                 else
                 {
                     GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y), Quaternion.identity);
+                    PunchTimer = 15;
                 }
             }
             if (ItemTracker.CurrentItemID == 1)
@@ -101,10 +103,12 @@ public class PlayerMovement : MonoBehaviour
                 if (MouseRightOfPlayer)
                 {
                     GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y), Quaternion.identity);
+                    PunchTimer = 30;
                 }
                 else
                 {
                     GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y), Quaternion.identity);
+                    PunchTimer = 30;
                 }
                 ItemTracker.CurrentItemDurability--;
                 if (ItemTracker.CurrentItemDurability <= 0)
@@ -113,7 +117,7 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
             State = 1;
-            PunchTimer = 15;
+            
             //Attack.GetComponent<SlashCode>().creator = id;
             //Attack.GetComponent<SlashCode>().flip = flip;
         }

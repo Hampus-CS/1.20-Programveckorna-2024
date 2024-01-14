@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BatSwing : MonoBehaviour
 {
-    float Timer = 15f;
+    float Timer = 30f;
     Transform TheT;
     RaycastHit2D[] HitEnemies;
     LayerMask EMask;

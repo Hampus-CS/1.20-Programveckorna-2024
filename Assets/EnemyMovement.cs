@@ -170,7 +170,7 @@ public class EnemyMovement : MonoBehaviour
                     {
                         PunchDirRight = true;
                         state = 2;
-                        PunchTimer = 40;
+                        PunchTimer = 60;
                     }
                     else
                     {
@@ -193,17 +193,19 @@ public class EnemyMovement : MonoBehaviour
             if (PunchTimer == 0)
             {
                 state = 3;
-                PunchTimer = 30;
+                
                 
                 if (PunchDirRight)
                 {
                     if(ItemID == 0)
                     {
                         GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y), Quaternion.identity);
+                        PunchTimer = 30;
                     }
                     else if (ItemID == 1)
                     {
                         GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y), Quaternion.identity);
+                        PunchTimer = 50;
                     }
                 }
                 else
@@ -211,10 +213,12 @@ public class EnemyMovement : MonoBehaviour
                     if (ItemID == 0)
                     {
                         GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y), Quaternion.identity);
+                        PunchTimer = 30;
                     }
                     else if (ItemID == 1)
                     {
                         GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y), Quaternion.identity);
+                        PunchTimer = 50;
                     }
                 }
             }
