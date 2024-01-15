@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1189300555576895923}
   - component: {fileID: 6579369626172556284}
   - component: {fileID: 3199076845060034023}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Player Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -178,10 +178,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0}
     oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -215,5 +215,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80488c893a34c634c961070ecb19decc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rooms: []
+  rooms:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   isNearDoor: 0
