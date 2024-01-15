@@ -89,12 +89,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (MouseRightOfPlayer)
                 {
-                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y), Quaternion.identity);
+                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y +1), Quaternion.identity);
                     PunchTimer = 15;
                 }
                 else
                 {
-                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y), Quaternion.identity);
+                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y +1), Quaternion.identity);
                     PunchTimer = 15;
                 }
             }
@@ -102,12 +102,12 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (MouseRightOfPlayer)
                 {
-                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y), Quaternion.identity);
+                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y+1), Quaternion.identity);
                     PunchTimer = 30;
                 }
                 else
                 {
-                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y), Quaternion.identity);
+                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y+1), Quaternion.identity);
                     PunchTimer = 30;
                 }
                 ItemTracker.CurrentItemDurability--;
@@ -154,9 +154,9 @@ public class PlayerMovement : MonoBehaviour
     }
     bool IsGrounded()
     {
-        RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y - 1), Vector2.down, raycastLength, GMask);
-        RaycastHit2D hitC = Physics2D.Raycast(new Vector2(TheT.position.x, TheT.position.y - 1), Vector2.down, raycastLength, GMask);
-        RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y - 1), Vector2.down, raycastLength, GMask);
+        RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y), Vector2.down, raycastLength, GMask);
+        RaycastHit2D hitC = Physics2D.Raycast(new Vector2(TheT.position.x, TheT.position.y), Vector2.down, raycastLength, GMask);
+        RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y), Vector2.down, raycastLength, GMask);
 
         if (hitL.collider != null || hitC.collider != null || hitR.collider != null)
         {

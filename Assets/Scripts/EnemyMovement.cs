@@ -109,8 +109,8 @@ public class EnemyMovement : MonoBehaviour
     {
         flash--;
         flash = Mathf.Clamp(flash, 0, 100f);
-        RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y), Vector2.left, 5, PMask);
-        RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y), Vector2.right, 5, PMask);
+        RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y+1), Vector2.left, 5, PMask);
+        RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y+1), Vector2.right, 5, PMask);
         speed = 0;
         if(state == 0 || state == 1)
         {
@@ -199,12 +199,12 @@ public class EnemyMovement : MonoBehaviour
                 {
                     if(ItemID == 0)
                     {
-                        GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y), Quaternion.identity);
+                        GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y + 1), Quaternion.identity);
                         PunchTimer = 30;
                     }
                     else if (ItemID == 1)
                     {
-                        GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y), Quaternion.identity);
+                        GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
                         PunchTimer = 50;
                     }
                 }
@@ -212,12 +212,12 @@ public class EnemyMovement : MonoBehaviour
                 {
                     if (ItemID == 0)
                     {
-                        GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y), Quaternion.identity);
+                        GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y + 1), Quaternion.identity);
                         PunchTimer = 30;
                     }
                     else if (ItemID == 1)
                     {
-                        GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y), Quaternion.identity);
+                        GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
                         PunchTimer = 50;
                     }
                 }
