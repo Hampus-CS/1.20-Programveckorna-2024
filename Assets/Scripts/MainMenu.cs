@@ -9,15 +9,15 @@ public class mainMenu : MonoBehaviour
     public void Play()
     {
 
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("TestLevelsMain");
 
     }
 
     public void Quit()
     {
 
-        Application.Quit();
         Debug.Log("Player has quit the game");
+        Application.Quit();
 
     }
 
