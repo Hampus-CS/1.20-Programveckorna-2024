@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoundItem : MonoBehaviour
+public class GroundItem : MonoBehaviour
 {
     bool PlayerOnItem = false;
     SpriteRenderer TheSR;
