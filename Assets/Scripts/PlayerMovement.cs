@@ -41,8 +41,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    
     void Update()
     {
+        /*
         if (PlayerHealth <= 0)
         {
             Destroy(gameObject);
@@ -57,8 +59,8 @@ public class PlayerMovement : MonoBehaviour
             speed--;
         }
         rb.velocity = new Vector2(speed*PlayerSpeed, rb.velocity.y);
-
-        //speed += ((Input.GetAxisRaw("Horizontal") * 4f) - speed) * 0.035f;
+        */
+        //
 
         float MouseWorldX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         if (MouseWorldX > TheT.position.x)
@@ -143,6 +145,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        speed += ((Input.GetAxisRaw("Horizontal") * 4f) - speed) * 0.035f;
+
         if (PunchTimer != 0)
         {
             PunchTimer--;
