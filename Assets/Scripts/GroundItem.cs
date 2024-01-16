@@ -22,6 +22,8 @@ public class GroundItem : MonoBehaviour
         {
             Destroy(gameObject);
             ItemTracker.CurrentItemID = ThisItemID;
+            ItemTracker.Timer = 5;
+            ItemTracker.Delay = true;
             if (ItemTracker.CurrentItemID == 1)
             {
                 ItemTracker.CurrentItemDurability = 2;

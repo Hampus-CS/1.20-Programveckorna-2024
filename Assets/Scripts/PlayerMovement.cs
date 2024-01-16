@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject slash;
     [SerializeField] GameObject Punch;
     [SerializeField] GameObject BatSwing;
+    [SerializeField] GameObject BatThrow;
     public Transform id;
     public GameObject screen_shake;
     float flip;
@@ -136,10 +137,28 @@ public class PlayerMovement : MonoBehaviour
                 TheSR.color = new Color(1, 1, 1);
             }
         }
+        if (Input.GetKeyDown(KeyCode.E) && State == 0 && IsGrounded() && ItemTracker.Delay == false)
+        {
+            if (ItemTracker.CurrentItemID == 1)
+            {
+                ItemTracker.CurrentItemID = 0;
+                
+                if(MouseRightOfPlayer)
+                {
+                    GameObject ThrownItem = Instantiate(BatThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<BatThrow>().MovementDir = 1;
+                }
+                else
+                {
+                    GameObject ThrownItem = Instantiate(BatThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<BatThrow>().MovementDir = -1;
+                }
+            }
+        }
 
-        
 
-        
+
+
     }
     private void FixedUpdate()
     {
