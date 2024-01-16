@@ -10,6 +10,7 @@ public class RoomTeleporter : MonoBehaviour
     public List<Transform> rooms = new List<Transform>();
     private Dictionary<Transform, float> roomWeights = new Dictionary<Transform, float>();
     public bool isNearDoor = false;
+    public static event Action<Transform> OnRoomTeleport;
 
     // Initialises a weight system and the rooms
     void Start()
@@ -35,6 +36,7 @@ public class RoomTeleporter : MonoBehaviour
         playerTransform.position = roomToTeleport.position;
 
         UpdateRoomWeights(roomToTeleport);
+        OnRoomTeleport?.Invoke(roomToTeleport);
     }
 
     // Choosing a room based on the weight system
