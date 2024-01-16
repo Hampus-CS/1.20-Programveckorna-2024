@@ -2432,6 +2432,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2960200281940780336, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: BatSwing
+      value: 
+      objectReference: {fileID: 7542384016247775821, guid: d5eab826b9a12fe4b895c6448b232b7b, type: 3}
+    - target: {fileID: 2960200281940780336, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
       propertyPath: screen_shake
       value: 
       objectReference: {fileID: 102356349}
@@ -3885,6 +3889,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3856224590615906349, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+      propertyPath: blood
+      value: 
+      objectReference: {fileID: 127245007698456114, guid: 3da8a81e1598c114e822abc95eb0f14e, type: 3}
     - target: {fileID: 3856224590615906349, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
       propertyPath: player
       value: 

@@ -6,13 +6,12 @@ public class EnemyMovement : MonoBehaviour
     public LayerMask mask;
     public GameObject sprite;
     //bool grounded = false;
-    float speed = 0f;
+    public float speed = 0f;
     public ParticleSystem dust;
-    float flash = 0f;
+    public float flash = 0f;
     public GameObject id;
     public GameObject screen_shake;
     public GameObject player;
-    public GameObject flash_sprite;
     [SerializeField] LayerMask PMask;
     [SerializeField] float EnemySpeed;
     [SerializeField] Transform TheT;
@@ -23,7 +22,13 @@ public class EnemyMovement : MonoBehaviour
     int PunchTimer = 0;
     int state = 0;
     Color[] EColors = { new Color(0, 0.7f, 0.1f), new Color(0.4f, 0.7f, 0) };
-    
+    bool grounded = false;
+    public float mouse_side = 1;
+    public GameObject blood;
+    public GameObject flash_sprite;
+    public float knockback = 0f;
+    float flip = 0;
+
     [SerializeField] int ItemID;
     //States:
     //0: Idle
@@ -62,17 +67,6 @@ public class EnemyMovement : MonoBehaviour
         }
         */
 
-        if (flash > 0f)
-        {
-            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 0f);
-        }
-        else
-        {
-            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(255f, 0f, 0f, 1f);
-
-            //hit = false;
-        }
-
         if (hp <= 0) Destroy(id);
         if (state == 2)
         {
@@ -107,8 +101,49 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (PunchTimer <= 0f)
+        {
+            mouse_side = speed;
+        }
+        else
+        {
+            mouse_side = 0;
+        }
+        mouse_side = Mathf.Clamp(mouse_side, -1, 1);
+        if (mouse_side != -1 && mouse_side != 1)
+        {
+            if (mouse_side < 0) mouse_side = -1;
+            if (mouse_side > 0) mouse_side = 1;
+        }
+        if (mouse_side != 0) sprite.GetComponent<Scale>().flip = mouse_side;
+        if (mouse_side != 0) flip = mouse_side;
+
+        if (IsGrounded())
+        {
+            if (grounded == false)
+            {
+                sprite.GetComponent<Scale>().scale_x = 1.25f;
+                sprite.GetComponent<Scale>().scale_y = 0.75f;
+            }
+
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+
+        if(flash > 0f)
+        {
+            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, flash/10);
+        }
+        else
+        {
+            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0f);
+        }
+
         flash--;
-        flash = Mathf.Clamp(flash, 0, 100f);
+        flash = Mathf.Clamp(flash, 0f, 100f);
         RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y+1), Vector2.left, 5, PMask);
         RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y+1), Vector2.right, 5, PMask);
         speed = 0;
@@ -185,7 +220,10 @@ public class EnemyMovement : MonoBehaviour
             {
                 state = 0;
             }
-            rb.velocity = new Vector2(speed * EnemySpeed, rb.velocity.y);
+
+            knockback += (0 - knockback) * 0.1f;
+
+            rb.velocity = new Vector2((speed * EnemySpeed) - (knockback*flip), rb.velocity.y);
         }
         if (state == 2)
         {
@@ -222,6 +260,10 @@ public class EnemyMovement : MonoBehaviour
                     }
                 }
             }
+
+            knockback += (0 - knockback) * 0.1f;
+
+            rb.velocity = new Vector2(-(knockback * flip), rb.velocity.y);
         }
         if (state == 3)
         {
@@ -230,6 +272,26 @@ public class EnemyMovement : MonoBehaviour
             {
                 state = 0;
             }
+
+            knockback += (0 - knockback) * 0.1f;
+
+            rb.velocity = new Vector2(-(knockback * flip), rb.velocity.y);
+        }
+    }
+
+    bool IsGrounded()
+    {
+        RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y), Vector2.down, 0.5f, mask);
+        RaycastHit2D hitC = Physics2D.Raycast(new Vector2(TheT.position.x, TheT.position.y), Vector2.down, 0.5f, mask);
+        RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y), Vector2.down, 0.5f, mask);
+
+        if (hitL.collider != null || hitC.collider != null || hitR.collider != null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
