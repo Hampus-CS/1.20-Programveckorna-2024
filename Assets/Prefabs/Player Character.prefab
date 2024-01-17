@@ -99,7 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale_x: 1
   scale_y: 1
-  flip: 1
 --- !u!1 &8426220812161059463
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,14 +204,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   mask:
     serializedVersion: 2
-    m_Bits: 0
-  sprite: {fileID: 0}
-  dust: {fileID: 0}
-  slash: {fileID: 0}
-  Punch: {fileID: 0}
-  BatSwing: {fileID: 0}
-  BatThrow: {fileID: 0}
-  id: {fileID: 0}
   screen_shake: {fileID: 0}
   Grounds: 0
   GMask:

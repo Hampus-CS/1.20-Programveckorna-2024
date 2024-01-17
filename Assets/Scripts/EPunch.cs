@@ -18,6 +18,7 @@ public class EPunch : MonoBehaviour
         {
             
             PlayerMovement.PlayerHealth -= ModDamage(1);
+            HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().screen_shake.GetComponent<CameraController>().shake = 50f;
         }
     }
 
@@ -35,6 +36,7 @@ public class EPunch : MonoBehaviour
     {
         int Damage = Dmg;
         Damage = HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().BlockDamage(Damage);
+        HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().screen_shake.GetComponent<CameraController>().shake = 50f;
         if (Damage < 0)
         {
             Damage = 0;
