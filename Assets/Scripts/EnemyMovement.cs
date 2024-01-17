@@ -166,15 +166,15 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else if (ItemID == 1)
                 {
-                    if (hitL.distance <= 1.5)
+                    if (hitR.distance <= 1.5)
                     {
                         PunchDirRight = true;
                         state = 2;
-                        PunchTimer = 60;
+                        PunchTimer = 40;
                     }
                     else
                     {
-                        speed = -1;
+                        speed = 1;
                         state = 1;
                     }
                 }
