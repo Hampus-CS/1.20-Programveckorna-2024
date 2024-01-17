@@ -261,11 +261,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   sprite: {fileID: 8725397840465253225}
+  speed: 0
   dust: {fileID: 8250486125507471486, guid: ab5b9007df483d34a8b84c48b7a59e69, type: 3}
   flash: 0
   id: {fileID: 8392846869750273752}
-  screen_shake: {fileID: 0}
-  player: {fileID: 0}
+  screen_shake: {fileID: 7483628470559373730, guid: 1c9eaeba04919af40a24e5bc6075e63d, type: 3}
+  player: {fileID: 8426220812161059463, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
   PMask:
     serializedVersion: 2
     m_Bits: 128
@@ -274,8 +275,10 @@ MonoBehaviour:
   Punch: {fileID: 7542384016247775821, guid: c2bdd47717cfe844fa918274cce6670d, type: 3}
   BatSwing: {fileID: 7542384016247775821, guid: 3aaf7e5271f779a45888e0996ac61f10, type: 3}
   TheSR: {fileID: 8105220826590650279}
-  blood: {fileID: 0}
+  mouse_side: 1
+  blood: {fileID: 127245007698456114, guid: 3da8a81e1598c114e822abc95eb0f14e, type: 3}
   flash_sprite: {fileID: 3147298197426990497}
+  knockback: 0
   ItemID: 0
   hp: 3
 --- !u!1 &8725397840465253225

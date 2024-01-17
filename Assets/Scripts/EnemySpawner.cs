@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;
     public int maxEnemiesPerRoom = 3;
+    public GameObject screen_shake;
     private Dictionary<Transform, List<GameObject>> spawnedEnemies = new Dictionary<Transform, List<GameObject>>();
 
     void Start()
@@ -37,6 +38,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Vector3 spawnPosition = room.position + new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0);
             GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            enemy.GetComponent<EnemyMovement>().screen_shake = screen_shake;
             spawnedEnemies[room].Add(enemy);
         }
     }
