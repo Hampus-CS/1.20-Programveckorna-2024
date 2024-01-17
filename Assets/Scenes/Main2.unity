@@ -2383,6 +2383,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2894982493982733164, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
   m_PrefabInstance: {fileID: 1006169782}
   m_PrefabAsset: {fileID: 0}
+--- !u!50 &910237391 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 8412447954102632886, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+  m_PrefabInstance: {fileID: 1006169782}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &910237393 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8875821712647644162, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+  m_PrefabInstance: {fileID: 1006169782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1006169782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2440,9 +2450,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6825499051532597596, guid: 327c036bacf588d46a4c5a176a3c5404, type: 3}
     - target: {fileID: 2960200281940780336, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: PlayerSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960200281940780336, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: mask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960200281940780336, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: GMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2960200281940780336, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
       propertyPath: screen_shake
       value: 
       objectReference: {fileID: 102356349}
+    - target: {fileID: 2960200281940780336, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: PlayerJumpHeight
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3199076845060034023, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
       propertyPath: rooms.Array.size
       value: 6
@@ -2474,6 +2500,58 @@ PrefabInstance:
     - target: {fileID: 8426220812161059463, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
       propertyPath: m_Name
       value: Player Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: id
+      value: 
+      objectReference: {fileID: 910237387}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 910237391}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: dust
+      value: 
+      objectReference: {fileID: 8250486125507471486, guid: ab5b9007df483d34a8b84c48b7a59e69, type: 3}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: Punch
+      value: 
+      objectReference: {fileID: 7542384016247775821, guid: 2fe45c0f59e486447b8ae552e5e816c6, type: 3}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: TheSR
+      value: 
+      objectReference: {fileID: 910237393}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: slash
+      value: 
+      objectReference: {fileID: 6044987603750454644, guid: eb4797a34edcb7b42805cdb769359da8, type: 3}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 2106822144}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: BatSwing
+      value: 
+      objectReference: {fileID: 7542384016247775821, guid: d5eab826b9a12fe4b895c6448b232b7b, type: 3}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: PlayerSpeed
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: mask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: GMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: screen_shake
+      value: 
+      objectReference: {fileID: 102356349}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: PlayerJumpHeight
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4520,6 +4598,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 2132911583}
+--- !u!1 &2106822144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5298307682454346397, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+  m_PrefabInstance: {fileID: 1006169782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2108578548
 GameObject:
   m_ObjectHideFlags: 0
