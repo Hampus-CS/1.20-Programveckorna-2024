@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject slash;
     [SerializeField] GameObject Punch;
     [SerializeField] GameObject BatSwing;
+    [SerializeField] GameObject BatThrow;
     public Transform id;
     public GameObject screen_shake;
     float flip;
@@ -26,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     int PunchTimer;
     public static int PlayerHealth;
     [SerializeField] SpriteRenderer TheSR;
+    bool grounded = false;
+    float mouse_side = 1;
     //States:
     //0: Nothing specific, can move around
     //1: Currently Attacking
@@ -41,12 +44,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    
     void Update()
     {
+        if(PunchTimer <= 0f) speed += ((Input.GetAxisRaw("Horizontal") * 1f) - speed) * 0.035f;
+        else speed += (0 - speed) * 0.1f;
+
+
         if (PlayerHealth <= 0)
         {
             Destroy(gameObject);
         }
+        /*
             speed = 0;
         if (Input.GetKey(KeyCode.D) && State == 0)
         {
@@ -56,9 +65,10 @@ public class PlayerMovement : MonoBehaviour
         {
             speed--;
         }
+        */
         rb.velocity = new Vector2(speed*PlayerSpeed, rb.velocity.y);
-
-        //speed += ((Input.GetAxisRaw("Horizontal") * 4f) - speed) * 0.035f;
+        
+        //
 
         float MouseWorldX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
         if (MouseWorldX > TheT.position.x)
@@ -69,9 +79,22 @@ public class PlayerMovement : MonoBehaviour
         {
             MouseRightOfPlayer = false;
         }
-        //mouse_side = Mathf.Clamp(mouse_side, -1, 1);
-        //if (mouse_side != -1 && mouse_side != 1) mouse_side = 1;
-        //if (mouse_side != 0) flip = mouse_side;
+        
+        if (PunchTimer <= 0f)
+        {
+            mouse_side = Input.GetAxisRaw("Horizontal");
+        }
+        else
+        {
+            mouse_side = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
+        }
+        mouse_side = Mathf.Clamp(mouse_side, -1, 1);
+        if (mouse_side != -1 && mouse_side != 1)
+        {
+            if (mouse_side < 0) mouse_side = -1;
+            if (mouse_side > 0) mouse_side = 1;
+        }
+        if (mouse_side != 0) sprite.GetComponent<Scale>().flip = mouse_side;
 
         if (Input.GetKeyDown(KeyCode.Space) && State == 0)
         {
@@ -79,6 +102,9 @@ public class PlayerMovement : MonoBehaviour
             if (IsGrounded())
             {
                 rb.velocity = new Vector2(rb.velocity.x, PlayerJumpHeight);
+
+                sprite.GetComponent<Scale>().scale_x = 0.75f;
+                sprite.GetComponent<Scale>().scale_y = 1.25f;
             }
 
         }
@@ -110,11 +136,6 @@ public class PlayerMovement : MonoBehaviour
                     GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y+1), Quaternion.identity);
                     PunchTimer = 30;
                 }
-                ItemTracker.CurrentItemDurability--;
-                if (ItemTracker.CurrentItemDurability <= 0)
-                {
-                    ItemTracker.CurrentItemID = 0;
-                }
             }
             State = 1;
             
@@ -137,12 +158,44 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.E) && State == 0 && IsGrounded() && ItemTracker.Delay == false)
+        {
+            if(ItemTracker.CurrentItemID == 1)
+            {
+                ItemTracker.CurrentItemID = 0;
+
+                if(MouseRightOfPlayer)
+                {
+                    GameObject ThrownItem = Instantiate(BatThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<BatThrow>().MovementDir = 1;
+                }
+                else
+                {
+                    GameObject ThrownItem = Instantiate(BatThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<BatThrow>().MovementDir = -1;
+                }
+            }
+        }
 
         
     }
     private void FixedUpdate()
     {
+        if(IsGrounded())
+        {
+            if(grounded == false)
+            {
+                sprite.GetComponent<Scale>().scale_x = 1.25f;
+                sprite.GetComponent<Scale>().scale_y = 0.75f;
+            }
+
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
+
         if (PunchTimer != 0)
         {
             PunchTimer--;

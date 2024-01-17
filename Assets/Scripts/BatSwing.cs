@@ -17,6 +17,16 @@ public class BatSwing : MonoBehaviour
         for (int i = 0; i < HitEnemies.Length; i++)
         {
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().hp -= 2;
+            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().flash = 10f;
+            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().knockback = 20f;
+            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 25f;
+            Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
+
+            ItemTracker.CurrentItemDurability--;
+            if (ItemTracker.CurrentItemDurability <= 0)
+            {
+                ItemTracker.CurrentItemID = 0;
+            }
         }
     }
 

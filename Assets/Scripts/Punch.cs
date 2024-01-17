@@ -17,6 +17,10 @@ public class Punch : MonoBehaviour
         for (int i = 0; i < HitEnemies.Length; i++)
         {
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().hp--;
+            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().flash = 10f;
+            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().knockback = 10f;
+            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 15f;
+            Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
         }
     }
 
