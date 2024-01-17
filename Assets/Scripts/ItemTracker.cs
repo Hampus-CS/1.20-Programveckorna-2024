@@ -20,14 +20,13 @@ public class ItemTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Timer > 0)
+        if(Timer > 0)
         {
             Timer--;
         }
-        if (Timer == 0)
+        if(Timer == 0)
         {
             Delay = false;
         }
-
     }
 }
