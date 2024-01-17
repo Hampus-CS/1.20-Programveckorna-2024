@@ -98,27 +98,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 8426220812161059463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64fee4cb029cf8d42a032f35e830fe16, type: 3}
+  m_Script: {fileID: 11500000, guid: b3b92bca1eeef5f4ca6c383c3c7c1c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 8412447954102632886}
+  rb: {fileID: 0}
   mask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   sprite: {fileID: 0}
-  dust: {fileID: 8250486125507471486, guid: ab5b9007df483d34a8b84c48b7a59e69, type: 3}
-  slash: {fileID: 6044987603750454644, guid: eb4797a34edcb7b42805cdb769359da8, type: 3}
-  Punch: {fileID: 7542384016247775821, guid: 2fe45c0f59e486447b8ae552e5e816c6, type: 3}
-  BatSwing: {fileID: 7542384016247775821, guid: 13ead164eb70f4644865bbd25733a817, type: 3}
-  id: {fileID: 2894982493982733164}
+  dust: {fileID: 0}
+  slash: {fileID: 0}
+  Punch: {fileID: 0}
+  BatSwing: {fileID: 0}
+  BatThrow: {fileID: 0}
+  id: {fileID: 0}
   screen_shake: {fileID: 0}
   Grounds: 0
   GMask:
     serializedVersion: 2
-    m_Bits: 8
-  PlayerSpeed: 8
-  PlayerJumpHeight: 10
-  TheSR: {fileID: 8875821712647644162}
+    m_Bits: 0
+  PlayerSpeed: 0
+  PlayerJumpHeight: 0
+  TheSR: {fileID: 0}
 --- !u!50 &8412447954102632886
 Rigidbody2D:
   serializedVersion: 4
@@ -200,9 +201,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 8426220812161059463}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f8b1b58f406f84daba9a4fdad5a22e, type: 3}
+  m_Script: {fileID: 11500000, guid: 805d433af3a3dfc4ca2d2458bfeb187f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scale_x: 1
+  scale_y: 1
+  flip: 1
 --- !u!114 &3199076845060034023
 MonoBehaviour:
   m_ObjectHideFlags: 0
