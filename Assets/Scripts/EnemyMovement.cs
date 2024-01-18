@@ -28,6 +28,7 @@ public class EnemyMovement : MonoBehaviour
     public GameObject flash_sprite;
     public float knockback = 0f;
     float flip = 0;
+    int punch_index = 1;
 
     [SerializeField] int ItemID;
     //States:
@@ -47,7 +48,45 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Animations
+        if (state == 3)
+        {
+            if (PunchTimer <= 0f)
+            {
+                if (Input.GetAxisRaw("Horizontal") != 0f)
+                {
+                    sprite.GetComponent<PlayerAnimation>().animation_state = 1;
+                    flash_sprite.GetComponent<PlayerAnimation>().animation_state = 1;
+                }
+                else
+                {
+                    sprite.GetComponent<PlayerAnimation>().animation_state = 0;
+                    flash_sprite.GetComponent<PlayerAnimation>().animation_state = 0;
+                }
+            }
+            else
+            {
+                if (ItemTracker.CurrentItemID == 0)
+                {
+                    if (punch_index == 1)
+                    {
+                        sprite.GetComponent<PlayerAnimation>().animation_state = 2;
+                        flash_sprite.GetComponent<PlayerAnimation>().animation_state = 2;
+                    }
+                    else
+                    {
+                        sprite.GetComponent<PlayerAnimation>().animation_state = 3;
+                        flash_sprite.GetComponent<PlayerAnimation>().animation_state = 3;
+                    }
+                }
+
+                if (ItemTracker.CurrentItemID == 1)
+                {
+                    sprite.GetComponent<PlayerAnimation>().animation_state = 4;
+                    flash_sprite.GetComponent<PlayerAnimation>().animation_state = 4;
+                }
+            }
+        }
 
         //float playerSide = (player.transform.position.x - transform.position.x);
         //playerSide = Mathf.Clamp(playerSide, -1, 1);
@@ -56,7 +95,7 @@ public class EnemyMovement : MonoBehaviour
 
         //rb.velocity = new Vector2(speed, rb.velocity.y);
 
-        
+
         /*
         if (Input.GetKeyUp("w") && grounded)
         {
@@ -231,8 +270,9 @@ public class EnemyMovement : MonoBehaviour
             if (PunchTimer == 0)
             {
                 state = 3;
-                
-                
+
+                punch_index = -punch_index;
+
                 if (PunchDirRight)
                 {
                     if(ItemID == 0)
