@@ -2483,6 +2483,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6825499051532597596, guid: 327c036bacf588d46a4c5a176a3c5404, type: 3}
     - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: KnifeSwing
+      value: 
+      objectReference: {fileID: 7542384016247775821, guid: ecc2939e0abe39348a75c11160180a1a, type: 3}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
+      propertyPath: KnifeThrow
+      value: 
+      objectReference: {fileID: 6825499051532597596, guid: a78c377c0d285444193dd027dcf8afbe, type: 3}
+    - target: {fileID: 8479176680046055375, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
       propertyPath: PlayerSpeed
       value: 8
       objectReference: {fileID: 0}
@@ -2561,6 +2569,10 @@ PrefabInstance:
     - target: {fileID: 3046509189668371681, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764803890274354865, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
+      propertyPath: ThisItemID
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3766,6 +3778,10 @@ PrefabInstance:
     - target: {fileID: 3046509189668371681, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7764803890274354865, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
+      propertyPath: ThisItemID
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

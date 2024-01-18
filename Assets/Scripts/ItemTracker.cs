@@ -12,6 +12,7 @@ public class ItemTracker : MonoBehaviour
     //Item ID list: 
     //Fists: 0
     //Bat: 1
+    //Knife: 2
     void Start()
     {
         CurrentItemID = 0;

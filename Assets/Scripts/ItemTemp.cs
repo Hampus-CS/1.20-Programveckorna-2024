@@ -21,5 +21,9 @@ public class ItemTemp : MonoBehaviour
         {
             TheTMP.text = "Item: " + "Baseball bat " + ItemTracker.CurrentItemDurability;
         }
+        if (ItemTracker.CurrentItemID == 2)
+        {
+            TheTMP.text = "Item: " + "Knife " + ItemTracker.CurrentItemDurability;
+        }
     }
 }

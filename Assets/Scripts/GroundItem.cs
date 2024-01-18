@@ -6,13 +6,13 @@ public class GroundItem : MonoBehaviour
 {
     bool PlayerOnItem = false;
     SpriteRenderer TheSR;
-    int ThisItemID;
+    [SerializeField] public int ThisItemID;
     //IDs:
     //1: Bat
+    //2: Knife
     void Start()
     {
         TheSR = gameObject.GetComponent<SpriteRenderer>();
-        ThisItemID = 1;
     }
 
     // Update is called once per frame
@@ -27,6 +27,10 @@ public class GroundItem : MonoBehaviour
             if (ItemTracker.CurrentItemID == 1)
             {
                 ItemTracker.CurrentItemDurability = 2;
+            }
+            if (ItemTracker.CurrentItemID == 2)
+            {
+                ItemTracker.CurrentItemDurability = 1;    
             }
         }
 
