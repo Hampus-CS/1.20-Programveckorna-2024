@@ -29,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] SpriteRenderer TheSR;
     bool grounded = false;
     float mouse_side = 1;
+    public int punch_index = 1;
+
     //States:
     //0: Nothing specific, can move around
     //1: Currently Attacking
@@ -47,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update()
     {
-        if(PunchTimer <= 0f) speed += ((Input.GetAxisRaw("Horizontal") * 1f) - speed) * 0.035f;
+        if(PunchTimer <= 0f && State != 2) speed += ((Input.GetAxisRaw("Horizontal") * 1f) - speed) * 0.035f;
         else speed += (0 - speed) * 0.1f;
 
 
@@ -67,6 +69,47 @@ public class PlayerMovement : MonoBehaviour
         }
         */
         rb.velocity = new Vector2(speed*PlayerSpeed, rb.velocity.y);
+
+        // Animations
+        if (State != 2)
+        {
+            if (PunchTimer <= 0f)
+            {
+                if (Input.GetAxisRaw("Horizontal") != 0f)
+                {
+                    sprite.GetComponent<PlayerAnimation>().animation_state = 1;
+                }
+                else
+                {
+                    sprite.GetComponent<PlayerAnimation>().animation_state = 0;
+                }
+            }
+            else
+            {
+                if (ItemTracker.CurrentItemID == 0)
+                {
+                    if (punch_index == 1) sprite.GetComponent<PlayerAnimation>().animation_state = 2;
+                    else sprite.GetComponent<PlayerAnimation>().animation_state = 3;
+                }
+
+                if (ItemTracker.CurrentItemID == 1)
+                {
+                    sprite.GetComponent<PlayerAnimation>().animation_state = 4;
+                }
+            }
+        }
+        else
+        {
+            if (ItemTracker.CurrentItemID == 0)
+            {
+                sprite.GetComponent<PlayerAnimation>().animation_state = 5;
+            }
+
+            if (ItemTracker.CurrentItemID == 1)
+            {
+                sprite.GetComponent<PlayerAnimation>().animation_state = 6;
+            }
+        }
         
         //
 
@@ -113,6 +156,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (ItemTracker.CurrentItemID == 0)
             {
+                punch_index = -punch_index;
+
                 if (MouseRightOfPlayer)
                 {
                     GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y +1), Quaternion.identity);
