@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject Punch;
     [SerializeField] GameObject BatSwing;
     [SerializeField] GameObject BatThrow;
+    [SerializeField] GameObject KnifeSwing;
+    [SerializeField] GameObject KnifeThrow;
     public Transform id;
     public GameObject screen_shake;
     float flip;
@@ -137,6 +139,19 @@ public class PlayerMovement : MonoBehaviour
                     PunchTimer = 30;
                 }
             }
+            if (ItemTracker.CurrentItemID == 2)
+            {
+                if (MouseRightOfPlayer)
+                {
+                    GameObject Attack = Instantiate(KnifeSwing, new Vector2(transform.position.x + 1.1f, transform.position.y + 1), Quaternion.identity);
+                    PunchTimer = 15;
+                }
+                else
+                {
+                    GameObject Attack = Instantiate(KnifeSwing, new Vector2(transform.position.x - 1.1f, transform.position.y + 1), Quaternion.identity);
+                    PunchTimer = 15;
+                }
+            }
             State = 1;
             
             //Attack.GetComponent<SlashCode>().creator = id;
@@ -160,11 +175,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E) && State == 0 && IsGrounded() && ItemTracker.Delay == false)
         {
-            if(ItemTracker.CurrentItemID == 1)
+            if (ItemTracker.CurrentItemID == 1)
             {
                 ItemTracker.CurrentItemID = 0;
 
-                if(MouseRightOfPlayer)
+                if (MouseRightOfPlayer)
                 {
                     GameObject ThrownItem = Instantiate(BatThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
                     ThrownItem.GetComponent<BatThrow>().MovementDir = 1;
@@ -175,9 +190,22 @@ public class PlayerMovement : MonoBehaviour
                     ThrownItem.GetComponent<BatThrow>().MovementDir = -1;
                 }
             }
-        }
+            if (ItemTracker.CurrentItemID == 2)
+            {
+                ItemTracker.CurrentItemID = 0;
 
-        
+                if (MouseRightOfPlayer)
+                {
+                    GameObject ThrownItem = Instantiate(KnifeThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<KnifeThrow>().MovementDir = 1;
+                }
+                else
+                {
+                    GameObject ThrownItem = Instantiate(KnifeThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<KnifeThrow>().MovementDir = -1;
+                }
+            }
+        }
     }
     private void FixedUpdate()
     {
@@ -242,6 +270,15 @@ public class PlayerMovement : MonoBehaviour
             else if(ItemTracker.CurrentItemID == 1)
             {
                 ItemTracker.CurrentItemDurability --;
+                if (ItemTracker.CurrentItemDurability <= 0)
+                {
+                    ItemTracker.CurrentItemID = 0;
+                }
+                return Dmg - 2;
+            }
+            else if(ItemTracker.CurrentItemID == 2)
+            {
+                ItemTracker.CurrentItemDurability--;
                 if (ItemTracker.CurrentItemDurability <= 0)
                 {
                     ItemTracker.CurrentItemID = 0;
