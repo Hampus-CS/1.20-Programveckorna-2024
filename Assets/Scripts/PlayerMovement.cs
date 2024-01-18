@@ -1,6 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -57,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (PlayerHealth <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("DeathScreen");
         }
         /*
             speed = 0;
