@@ -212,6 +212,8 @@ MonoBehaviour:
   Punch: {fileID: 7542384016247775821, guid: 2fe45c0f59e486447b8ae552e5e816c6, type: 3}
   BatSwing: {fileID: 7542384016247775821, guid: d5eab826b9a12fe4b895c6448b232b7b, type: 3}
   BatThrow: {fileID: 6825499051532597596, guid: 327c036bacf588d46a4c5a176a3c5404, type: 3}
+  KnifeSwing: {fileID: 7542384016247775821, guid: ecc2939e0abe39348a75c11160180a1a, type: 3}
+  KnifeThrow: {fileID: 6825499051532597596, guid: a78c377c0d285444193dd027dcf8afbe, type: 3}
   id: {fileID: 285256287035088943}
   screen_shake: {fileID: 7483628470559373730, guid: 1c9eaeba04919af40a24e5bc6075e63d, type: 3}
   Grounds: 0
@@ -221,6 +223,7 @@ MonoBehaviour:
   PlayerSpeed: 8
   PlayerJumpHeight: 10
   TheSR: {fileID: 4653603586096087211}
+  punch_index: 1
 --- !u!50 &210128729482833183
 Rigidbody2D:
   serializedVersion: 4
