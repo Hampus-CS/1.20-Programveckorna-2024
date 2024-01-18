@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale_x: 1
   scale_y: 1
+  flip: 1
 --- !u!1 &5464226945825446431
 GameObject:
   m_ObjectHideFlags: 0
