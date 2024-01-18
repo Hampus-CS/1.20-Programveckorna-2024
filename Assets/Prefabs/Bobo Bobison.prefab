@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8388281758607885835}
   - component: {fileID: 4653603586096087211}
   - component: {fileID: 9198407130562091373}
+  - component: {fileID: 1065050837239249842}
+  - component: {fileID: 496110863720352034}
   m_Layer: 7
   m_Name: PrisonGuysFromerBrotherInLaw
   m_TagString: Untagged
@@ -73,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 879cab5f4fdde3946b0b24acb4b5b974, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -100,6 +102,41 @@ MonoBehaviour:
   scale_x: 1
   scale_y: 1
   flip: 1
+--- !u!114 &1065050837239249842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787730515728068735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b02f4faf03c2d4b43b7c014f537f2891, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animation_state: 0
+  anim: {fileID: 496110863720352034}
+--- !u!95 &496110863720352034
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5787730515728068735}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0908966460a28624796544a8247a22d5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7260971499489196865
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +243,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 8
-  sprite: {fileID: 7260971499489196865}
+  sprite: {fileID: 5787730515728068735}
   dust: {fileID: 8250486125507471486, guid: ab5b9007df483d34a8b84c48b7a59e69, type: 3}
   slash: {fileID: 6044987603750454644, guid: eb4797a34edcb7b42805cdb769359da8, type: 3}
   Punch: {fileID: 7542384016247775821, guid: 2fe45c0f59e486447b8ae552e5e816c6, type: 3}

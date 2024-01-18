@@ -1,7 +1,9 @@
 using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public class PlayerMovement : MonoBehaviour
 {
