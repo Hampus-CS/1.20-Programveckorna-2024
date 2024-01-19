@@ -48,7 +48,7 @@ public class GroundItem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player Character")
+        if (collision.gameObject.tag == "Player")
         {
             PlayerOnItem = true;
             TheSR.color = new Color(0.5f, 0.5f, 1);
@@ -56,7 +56,7 @@ public class GroundItem : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player Character")
+        if (collision.gameObject.tag == "Player")
         {
             PlayerOnItem = false;
             TheSR.color = new Color(1, 1, 1);
