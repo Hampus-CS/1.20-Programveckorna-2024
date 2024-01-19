@@ -87,6 +87,8 @@ public class RoomManager : MonoBehaviour
             if (spawnManager != null)
             {
                 spawnManager.ActivateRoom();
+                PlayerMovement.PlayerHealth++;
+                ScoreTracker.Score++;
             }
             else
             {

@@ -43,5 +43,11 @@ public class Door : MonoBehaviour
         int nextRoomIndex = RoomManager.Instance.GetNextRoomIndex();
         RoomManager.Instance.TeleportPlayer(nextRoomIndex);
         spawnManager.DeactivateRoom();
+        PlayerMovement.PlayerHealth++;
+        if(PlayerMovement.PlayerHealth >= 5)
+        {
+            PlayerMovement.PlayerHealth = 5;
+        }
+        ScoreTracker.Score++;
     }
 }
