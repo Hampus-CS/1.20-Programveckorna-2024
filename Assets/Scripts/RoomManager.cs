@@ -30,7 +30,7 @@ public class RoomManager : MonoBehaviour
         }
 
         InitializeRoomWeights();
-
+        Debug.Log("InitializeRoomWeight");
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
@@ -80,6 +80,18 @@ public class RoomManager : MonoBehaviour
         if (roomIndex >= 0 && roomIndex < roomSpawnPoints.Length)
         {
             playerTransform.position = roomSpawnPoints[roomIndex].position;
+            Debug.Log("Player teleported to room index " + roomIndex);
+
+            // Optionally, you can also activate the room here
+            SpawnManager spawnManager = roomSpawnPoints[roomIndex].GetComponent<SpawnManager>();
+            if (spawnManager != null)
+            {
+                spawnManager.ActivateRoom();
+            }
+            else
+            {
+                Debug.LogError("No SpawnManager found in room " + roomIndex);
+            }
         }
         else
         {
