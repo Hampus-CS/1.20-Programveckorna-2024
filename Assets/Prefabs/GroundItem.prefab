@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 55e0f04036fbde74994190ba3b496468, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62d84c93d71a7ab45a990f92a65ac9a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1}
+    oldSize: {x: 0.32, y: 0.16}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -143,3 +143,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4634df81765d94e98812ea7546ea8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ThisItemID: 0
+  BatSprite: {fileID: 21300000, guid: 62d84c93d71a7ab45a990f92a65ac9a9, type: 3}
+  KnifeSprite: {fileID: 21300000, guid: 03ebace71e029ab4c810ebf2c05e6a0b, type: 3}
