@@ -7,12 +7,22 @@ public class GroundItem : MonoBehaviour
     bool PlayerOnItem = false;
     SpriteRenderer TheSR;
     [SerializeField] public int ThisItemID;
+    [SerializeField] Sprite BatSprite;
+    [SerializeField] Sprite KnifeSprite;
     //IDs:
     //1: Bat
     //2: Knife
     void Start()
     {
         TheSR = gameObject.GetComponent<SpriteRenderer>();
+        if(ThisItemID == 1)
+        {
+            TheSR.sprite = BatSprite;
+        }
+        if(ThisItemID == 2)
+        {
+            TheSR.sprite = KnifeSprite;
+        }
     }
 
     // Update is called once per frame

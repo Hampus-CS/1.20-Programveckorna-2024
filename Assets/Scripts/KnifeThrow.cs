@@ -13,16 +13,23 @@ public class KnifeThrow : MonoBehaviour
     Transform TheT;
     RaycastHit2D[] HitEnemies;
     RaycastHit2D[] HitGrounds;
+    SpriteRenderer TheSR;
     // Start is called before the first frame update
 
     void Start()
     {
+        TheSR = gameObject.GetComponent<SpriteRenderer>();
         TheRB = gameObject.GetComponent<Rigidbody2D>();
         Timer = 200;
         EMask = LayerMask.GetMask("Enemy");
         GMask = LayerMask.GetMask("Ground");
         TheT = gameObject.GetComponent<Transform>();
-        HitEnemies = Physics2D.BoxCastAll(TheT.position, new Vector2(1, 1), 0f, new Vector2(1, 0), 0f, EMask);
+        //HitEnemies = Physics2D.BoxCastAll(TheT.position, new Vector2(1, 1), 0f, new Vector2(1, 0), 0f, EMask);
+        if (MovementDir == -1)
+        {
+            TheSR.flipX = true;
+        }
+        
         /*
         for (int i = 0; i < HitEnemies.Length; i++)
         {
