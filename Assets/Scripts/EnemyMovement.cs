@@ -30,7 +30,7 @@ public class EnemyMovement : MonoBehaviour
     float flip = 0;
     int punch_index = 1;
 
-    [SerializeField] int ItemID;
+    public int ItemID = 1;
     //States:
     //0: Idle
     //1: Fighting
@@ -49,41 +49,58 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         //Animations
-        if (state == 3)
+        if (state == 0 || state == 1)
         {
             if (PunchTimer <= 0f)
             {
-                if (Input.GetAxisRaw("Horizontal") != 0f)
+                if (speed != 0f)
                 {
-                    sprite.GetComponent<PlayerAnimation>().animation_state = 1;
-                    flash_sprite.GetComponent<PlayerAnimation>().animation_state = 1;
+                    sprite.GetComponent<EnemyAnimation>().animation_state = 1;
+                    flash_sprite.GetComponent<EnemyAnimation>().animation_state = 1;
                 }
                 else
                 {
-                    sprite.GetComponent<PlayerAnimation>().animation_state = 0;
-                    flash_sprite.GetComponent<PlayerAnimation>().animation_state = 0;
+                    sprite.GetComponent<EnemyAnimation>().animation_state = 0;
+                    flash_sprite.GetComponent<EnemyAnimation>().animation_state = 0;
+                }
+            }
+        }
+        else
+        {
+            if(state == 3)
+            {
+                if (ItemID == 0)
+                {
+                    if (punch_index == 1)
+                    {
+                        sprite.GetComponent<EnemyAnimation>().animation_state = 2;
+                        flash_sprite.GetComponent<EnemyAnimation>().animation_state = 2;
+                    }
+                    else
+                    {
+                        sprite.GetComponent<EnemyAnimation>().animation_state = 3;
+                        flash_sprite.GetComponent<EnemyAnimation>().animation_state = 3;
+                    }
+                }
+
+                if (ItemID == 1)
+                {
+                    sprite.GetComponent<EnemyAnimation>().animation_state = 4;
+                    flash_sprite.GetComponent<EnemyAnimation>().animation_state = 4;
                 }
             }
             else
             {
-                if (ItemTracker.CurrentItemID == 0)
+                if (ItemID == 0)
                 {
-                    if (punch_index == 1)
-                    {
-                        sprite.GetComponent<PlayerAnimation>().animation_state = 2;
-                        flash_sprite.GetComponent<PlayerAnimation>().animation_state = 2;
-                    }
-                    else
-                    {
-                        sprite.GetComponent<PlayerAnimation>().animation_state = 3;
-                        flash_sprite.GetComponent<PlayerAnimation>().animation_state = 3;
-                    }
+                    sprite.GetComponent<EnemyAnimation>().animation_state = 5;
+                    flash_sprite.GetComponent<EnemyAnimation>().animation_state = 5;
                 }
 
-                if (ItemTracker.CurrentItemID == 1)
+                if (ItemID == 1)
                 {
-                    sprite.GetComponent<PlayerAnimation>().animation_state = 4;
-                    flash_sprite.GetComponent<PlayerAnimation>().animation_state = 4;
+                    sprite.GetComponent<EnemyAnimation>().animation_state = 6;
+                    flash_sprite.GetComponent<EnemyAnimation>().animation_state = 6;
                 }
             }
         }
