@@ -144,4 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformCollider: {fileID: 1953658213457812366}
-  player: {fileID: 0}
+  player: {fileID: 285256287035088943, guid: 57bab348438720b4ea0389990fde3dc7, type: 3}
