@@ -10,9 +10,12 @@ public class SpawnManager : MonoBehaviour
     public Transform[] enemySpawnPoints;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private bool isActive = false;
+    public GameObject screen_shake;
 
     public void ActivateRoom()
     {
+        Debug.Log(isActive);
+
         if (!isActive)
         {
             // SpawnPlayer(); // Remove this line
@@ -35,6 +38,7 @@ public class SpawnManager : MonoBehaviour
         foreach (Transform spawnPoint in enemySpawnPoints)
         {
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            enemy.GetComponent<EnemyMovement>().screen_shake = screen_shake;
             spawnedEnemies.Add(enemy);
             Debug.Log("Spawned enemy at " + spawnPoint.position);
         }

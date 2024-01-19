@@ -14,6 +14,7 @@ public class RoomManager : MonoBehaviour
     private int lastRoomIndex = -1;
     private const int START_ROOM_INDEX = 0;
     private Transform playerTransform;
+    public SpawnManager spawn_manager;
 
     public Transform[] roomSpawnPoints;
 
@@ -86,6 +87,7 @@ public class RoomManager : MonoBehaviour
             SpawnManager spawnManager = roomSpawnPoints[roomIndex].GetComponent<SpawnManager>();
             if (spawnManager != null)
             {
+                Debug.Log("Test");
                 spawnManager.ActivateRoom();
             }
             else
