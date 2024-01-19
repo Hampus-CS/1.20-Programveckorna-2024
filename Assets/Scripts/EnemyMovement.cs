@@ -257,7 +257,7 @@ public class EnemyMovement : MonoBehaviour
                 }
                 else if (ItemID == 1)
                 {
-                    if (hitL.distance <= 1.5)
+                    if (hitR.distance <= 1.5)
                     {
                         PunchDirRight = true;
                         state = 2;
@@ -265,7 +265,7 @@ public class EnemyMovement : MonoBehaviour
                     }
                     else
                     {
-                        speed = -1;
+                        speed = 1;
                         state = 1;
                     }
                 }
