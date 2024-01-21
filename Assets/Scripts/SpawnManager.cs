@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
+    //public GameObject playerPrefab;
     public GameObject enemyPrefab;
-    public Transform playerSpawnPoint;
+    //public Transform playerSpawnPoint;
     public Transform[] enemySpawnPoints;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private bool isActive = false;
@@ -18,7 +20,6 @@ public class SpawnManager : MonoBehaviour
 
         if (!isActive)
         {
-            // SpawnPlayer(); // Remove this line
             SpawnEnemies();
             isActive = true;
             Debug.Log("Room Activated");
@@ -56,4 +57,11 @@ public class SpawnManager : MonoBehaviour
         spawnedEnemies.RemoveAll(item => item == null);
         return spawnedEnemies.Count == 0;
     }
+
+    public void ResetRoom()
+    {
+        isActive = false;
+        Debug.Log("Room reset");
+    }
+
 }

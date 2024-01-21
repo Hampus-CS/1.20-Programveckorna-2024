@@ -1,8 +1,121 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using Debug = UnityEngine.Debug;
 
 public class CameraController : MonoBehaviour
+{
+    private Transform target;
+    private bool isTargetAlive = true;
+    private bool isCameraLocked = false;
+    private Vector3 originalPosition;
+    private Vector3 lockedPosition;
+
+    public void ToggleCameraLock()
+    {
+        isCameraLocked = !isCameraLocked;
+
+        if (!isCameraLocked)
+        {
+            lockedPosition = Vector3.zero;
+        }
+    }
+
+    public void LockCamera(Vector3 position)
+    {
+        isCameraLocked = true;
+        lockedPosition = position + new Vector3(0, 0, -10);
+    }
+
+    private void Awake()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        originalPosition = transform.position;
+    }
+
+    private void Start()
+    {
+        //shake = 5f;
+    }
+
+    private void LateUpdate()
+    {
+        if (!isTargetAlive || isCameraLocked || target == null)
+        {
+            return;
+        }
+
+        Vector3 newPosition = target.position;
+        newPosition.z = target.position.z - 10;
+
+        if (!isCameraLocked)
+        {
+            transform.position = newPosition;
+        }
+        else
+        {
+            transform.position = lockedPosition;
+        }
+    }
+}
+
+
+/*
+
+{
+    private Transform target;
+    private bool isTargetAlive = true;
+    private bool isCameraLocked = false;
+    private Vector3 originalPosition;
+    private Vector3 lockedPosition;
+
+    public float shake = 0f;
+
+
+    private void Awake()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        originalPosition = transform.position;
+    }
+
+    private void Start()
+    {
+        //shake = 5f;
+    }
+
+    public void ToggleCameraLock()
+    {
+        isCameraLocked = !isCameraLocked;
+    }
+
+    public void SetCameraPosition(Vector3 position)
+    {
+        transform.position = position;
+    }
+
+    private void LateUpdate()
+    {
+        if (!isTargetAlive || isCameraLocked || target == null)
+        {
+            return;
+        }
+
+        if (isCameraLocked)
+        {
+            transform.position = lockedPosition; // Lock the camera to the locked position
+        }
+        
+        Vector3 newPosition = target.position;
+        newPosition.z = target.position.z - 10;
+
+        transform.position = newPosition;
+    }
+
+}
+
+Old camera code, made it so the camera follows the player.
 {
 
     Transform target;
@@ -54,3 +167,4 @@ public class CameraController : MonoBehaviour
     }
 
 }
+*/

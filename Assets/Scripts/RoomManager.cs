@@ -14,9 +14,12 @@ public class RoomManager : MonoBehaviour
     private int lastRoomIndex = -1;
     private const int START_ROOM_INDEX = 0;
     private Transform playerTransform;
+    private CameraController cameraController;
     public SpawnManager spawn_manager;
 
     public Transform[] roomSpawnPoints;
+    public Transform[] cameraSpawnPoints;
+    public Transform initialCameraPosition;
 
     private void Awake()
     {
@@ -33,11 +36,22 @@ public class RoomManager : MonoBehaviour
         InitializeRoomWeights();
         Debug.Log("InitializeRoomWeight");
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+
+        // Debug statements
+        Debug.Log("Camera Controller: " + cameraController);
+        Debug.Log("Initial Camera Position: " + initialCameraPosition);
+
+        // Set the initial camera position directly
+        if (cameraController != null && initialCameraPosition != null)
+        {
+            cameraController.transform.position = initialCameraPosition.position;
+        }
     }
 
     private void InitializeRoomWeights()
     {
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 9; i++)
         {
             roomWeights.Add(1); // Initialize all weights to 1
         }
@@ -73,17 +87,22 @@ public class RoomManager : MonoBehaviour
         }
 
         lastRoomIndex = roomIndex;
+        Debug.Log($"Next room index calculated: {roomIndex}");
         return roomIndex;
     }
 
     public void TeleportPlayer(int roomIndex)
     {
-        if (roomIndex >= 0 && roomIndex < roomSpawnPoints.Length)
+        Debug.Log($"Attempting to teleport player to room index: {roomIndex}");
+        if (roomIndex >= 0 && roomIndex < roomSpawnPoints.Length && roomIndex < cameraSpawnPoints.Length)
         {
-            playerTransform.position = roomSpawnPoints[roomIndex].position;
-            Debug.Log("Player teleported to room index " + roomIndex);
+            if (cameraController != null)
+            {
+                cameraController.LockCamera(cameraSpawnPoints[roomIndex].position);
+            }
 
-            // Optionally, you can also activate the room here
+            playerTransform.position = roomSpawnPoints[roomIndex].position;
+
             SpawnManager spawnManager = roomSpawnPoints[roomIndex].GetComponent<SpawnManager>();
             if (spawnManager != null)
             {
@@ -97,7 +116,7 @@ public class RoomManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Invalid room index for teleportation.");
+            Debug.LogError($"Invalid room index for teleportation: {roomIndex}");
         }
     }
 }
