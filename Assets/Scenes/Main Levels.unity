@@ -210,10 +210,9 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
   playerSpawnPoint: {fileID: 494219994}
   enemySpawnPoints:
-  - {fileID: 1349349118}
-  - {fileID: 1252556137}
-  - {fileID: 1098626972}
-  - {fileID: 1620510843}
+  - {fileID: 95681942}
+  - {fileID: 1577757255}
+  - {fileID: 1769543310}
   screen_shake: {fileID: 1904953037}
 --- !u!1 &24517402
 GameObject:
@@ -48427,11 +48426,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 140601427}
-  - {fileID: 339399083}
-  - {fileID: 502312313}
-  - {fileID: 651240126}
   - {fileID: 628223438}
+  - {fileID: 651240126}
+  - {fileID: 502312313}
+  - {fileID: 339399083}
+  - {fileID: 140601427}
   - {fileID: 1376859881}
   - {fileID: 328666100}
   - {fileID: 152759770}
@@ -48454,8 +48453,11 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
   playerSpawnPoint: {fileID: 1376859881}
   enemySpawnPoints:
-  - {fileID: 1403444462}
-  - {fileID: 1158925885}
+  - {fileID: 628223438}
+  - {fileID: 651240126}
+  - {fileID: 502312313}
+  - {fileID: 339399083}
+  - {fileID: 140601427}
   screen_shake: {fileID: 1904953037}
 --- !u!1001 &61117386
 PrefabInstance:
@@ -51716,10 +51718,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1620510843}
-  - {fileID: 1098626972}
-  - {fileID: 1252556137}
   - {fileID: 1349349118}
+  - {fileID: 1252556137}
+  - {fileID: 1098626972}
+  - {fileID: 1620510843}
   - {fileID: 1835777116}
   - {fileID: 191146984}
   - {fileID: 309157242}
@@ -51742,9 +51744,10 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
   playerSpawnPoint: {fileID: 1835777116}
   enemySpawnPoints:
-  - {fileID: 95681942}
-  - {fileID: 1577757255}
-  - {fileID: 1769543310}
+  - {fileID: 1349349118}
+  - {fileID: 1252556137}
+  - {fileID: 1098626972}
+  - {fileID: 1620510843}
   screen_shake: {fileID: 1904953037}
 --- !u!1001 &970758430
 PrefabInstance:
@@ -53180,8 +53183,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1158925885}
   - {fileID: 1403444462}
+  - {fileID: 1158925885}
   - {fileID: 64578113}
   - {fileID: 870353156}
   - {fileID: 989241735}
@@ -53205,11 +53208,8 @@ MonoBehaviour:
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
   playerSpawnPoint: {fileID: 64578113}
   enemySpawnPoints:
-  - {fileID: 628223438}
-  - {fileID: 651240126}
-  - {fileID: 502312313}
-  - {fileID: 339399083}
-  - {fileID: 140601427}
+  - {fileID: 1403444462}
+  - {fileID: 1158925885}
   screen_shake: {fileID: 1904953037}
 --- !u!1 &1252556136
 GameObject:
