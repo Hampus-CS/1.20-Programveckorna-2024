@@ -7,7 +7,7 @@ public class Door : MonoBehaviour
     private SpawnManager spawnManager;
     public bool playerIsNear;
     public bool playerTeleport;
-    public GameObject camera;
+    //public GameObject camera;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class Door : MonoBehaviour
     {
         if (playerIsNear && Input.GetKeyDown(KeyCode.T) && spawnManager.AreAllEnemiesDefeated())
         {
-            camera.SetActive(false);
+            //camera.SetActive(false);
             TriggerTeleportation();
         }
     }
@@ -50,8 +50,10 @@ public class Door : MonoBehaviour
             int nextRoomIndex = RoomManager.Instance.GetNextRoomIndex();
             RoomManager.Instance.TeleportPlayer(nextRoomIndex);
             spawnManager.DeactivateRoom();
-            PlayerMovement.PlayerHealth++;
-            ScoreTracker.Score++;
+            
+        if(PlayerMovement.PlayerHealth < 5) PlayerMovement.PlayerHealth++;
+        
+        ScoreTracker.Score++;
     }
 
 }

@@ -5,32 +5,34 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using Debug = UnityEngine.Debug;
 using System.Collections.Specialized;
+using UnityEditorInternal;
 
 public class CameraController : MonoBehaviour
 {
     private Transform target;
     private bool isTargetAlive = true;
     private RoomManager roomManager;
+    public float shake = 0f;
+    public Transform current_camera;
+    public GameObject transition;
 
     private void Start()
     {
         roomManager = RoomManager.Instance;
-        //shake = 5f;
+        shake = 5f;
     }
 
     private void LateUpdate()
     {
+        shake += (0f - shake) * 0.1f;
+        /*
         if (!isTargetAlive)
         {
             return;
         }
+        */
+        transform.position += (new Vector3(current_camera.position.x + Random.Range(-shake, shake), current_camera.position.y + Random.Range(-shake, shake), -10) - transform.position)*0.1f;
     }
-    
-    private void Awake()
-    {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
 }
 
 /*

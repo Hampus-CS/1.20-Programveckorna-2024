@@ -16,7 +16,7 @@ public class RoomManager : MonoBehaviour
     private CameraController cameraController;
 
     public Transform[] roomSpawnPoints;
-    public GameObject[] cameras;
+    //public GameObject[] cameras;
 
     private void Awake()
     {
@@ -32,7 +32,7 @@ public class RoomManager : MonoBehaviour
 
         InitializeRoomWeights();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
+        //cameraController = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
     }
 
     private void InitializeRoomWeights()
@@ -82,6 +82,7 @@ public class RoomManager : MonoBehaviour
             Debug.Log($"Teleporting player to room {roomIndex}");
 
             // Disable the previous camera, useless as far as i know.
+            /*
             if (currentRoomIndex >= 0 && currentRoomIndex < cameras.Length)
             {
                 cameras[currentRoomIndex].SetActive(false);
@@ -94,7 +95,7 @@ public class RoomManager : MonoBehaviour
                 cameras[roomIndex].SetActive(true);
                 Debug.Log($"Camera for room {roomIndex} enabled.");
             }
-
+            */
             // Teleport the player to the new room
             playerTransform.position = roomSpawnPoints[roomIndex].position;
 
