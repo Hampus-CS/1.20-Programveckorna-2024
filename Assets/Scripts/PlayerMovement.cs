@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject KnifeSwing;
     [SerializeField] GameObject KnifeThrow;
     public Transform id;
-    public GameObject screen_shake;
+    //public GameObject screen_shake;
     float flip;
     public int Grounds = 0;
     public LayerMask GMask;

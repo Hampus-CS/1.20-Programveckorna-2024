@@ -5,7 +5,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private SpawnManager spawnManager;
-    private bool playerIsNear;
+    public bool playerIsNear;
+    public bool playerTeleport;
+    public GameObject camera;
 
     private void Start()
     {
@@ -15,9 +17,14 @@ public class Door : MonoBehaviour
 
     private void Update()
     {
-        // Check if the player is near, 'T' is pressed, and all enemies are defeated
+            DoorInteraction();
+    }
+
+    private void DoorInteraction()
+    {
         if (playerIsNear && Input.GetKeyDown(KeyCode.T) && spawnManager.AreAllEnemiesDefeated())
         {
+            camera.SetActive(false);
             TriggerTeleportation();
         }
     }
@@ -40,8 +47,11 @@ public class Door : MonoBehaviour
 
     private void TriggerTeleportation()
     {
-        int nextRoomIndex = RoomManager.Instance.GetNextRoomIndex();
-        RoomManager.Instance.TeleportPlayer(nextRoomIndex);
-        spawnManager.DeactivateRoom();
+            int nextRoomIndex = RoomManager.Instance.GetNextRoomIndex();
+            RoomManager.Instance.TeleportPlayer(nextRoomIndex);
+            spawnManager.DeactivateRoom();
+            PlayerMovement.PlayerHealth++;
+            ScoreTracker.Score++;
     }
+
 }

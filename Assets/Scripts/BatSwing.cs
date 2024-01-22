@@ -19,7 +19,7 @@ public class BatSwing : MonoBehaviour
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().hp -= 2;
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().flash = 10f;
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().knockback = 20f;
-            HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 25f;
+            //HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 25f;
             Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
 
             ItemTracker.CurrentItemDurability--;

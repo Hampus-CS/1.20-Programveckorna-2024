@@ -1,8 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+using Debug = UnityEngine.Debug;
+using System.Collections.Specialized;
 
 public class CameraController : MonoBehaviour
+{
+    private Transform target;
+    private bool isTargetAlive = true;
+    private RoomManager roomManager;
+
+    private void Start()
+    {
+        roomManager = RoomManager.Instance;
+        //shake = 5f;
+    }
+
+    private void LateUpdate()
+    {
+        if (!isTargetAlive)
+        {
+            return;
+        }
+    }
+    
+    private void Awake()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+}
+
+/*
+Old camera code, made it so the camera follows the player.
 {
 
     Transform target;
@@ -54,3 +86,4 @@ public class CameraController : MonoBehaviour
     }
 
 }
+*/
