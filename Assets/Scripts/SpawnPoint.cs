@@ -7,6 +7,9 @@ using Debug = UnityEngine.Debug;
 public class SpawnPoint : MonoBehaviour
 {
     public GameObject room;
+    public GameObject main_camera;
+    public Transform current_camera;
+
     bool done = false;
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -18,6 +21,8 @@ public class SpawnPoint : MonoBehaviour
             done = true;
 
         }
+
+        main_camera.GetComponent<CameraController>().current_camera = current_camera;
     }
 
     public void ResetSpawnPoint()
