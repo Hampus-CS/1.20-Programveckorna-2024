@@ -16,9 +16,8 @@ public class EPunch : MonoBehaviour
         HitPlayer = Physics2D.BoxCastAll(TheT.position, new Vector2(1,1), 0f, new Vector2(1,0), 0f, PMask);
         for (int i = 0; i < HitPlayer.Length; i++)
         {
-            
             PlayerCore.playerHealth -= ModDamage(1);
-            HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().screenShake.GetComponent<CameraController>().shake = 50f;
+            HitPlayer[0].collider.gameObject.GetComponent<PlayerCore>().screenShake.GetComponent<CameraController>().shake = 50f;
         }
     }
 

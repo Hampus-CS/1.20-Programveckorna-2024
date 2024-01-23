@@ -31,4 +31,42 @@ public class PlayerBlock : MonoBehaviour
             }
         }
     }
+
+    public int BlockDamage(int Dmg)
+    {
+        if (thePlayerCore.currentState == 2)
+        {
+            if (ItemTracker.CurrentItemID == 0)
+            {
+                return Dmg - 1;
+            }
+            else if (ItemTracker.CurrentItemID == 1)
+            {
+                ItemTracker.CurrentItemDurability--;
+                if (ItemTracker.CurrentItemDurability <= 0)
+                {
+                    ItemTracker.CurrentItemID = 0;
+                }
+                return Dmg - 2;
+            }
+            else if (ItemTracker.CurrentItemID == 2)
+            {
+                ItemTracker.CurrentItemDurability--;
+                if (ItemTracker.CurrentItemDurability <= 0)
+                {
+                    ItemTracker.CurrentItemID = 0;
+                }
+                return Dmg - 2;
+            }
+            else
+            {
+                return Dmg;
+            }
+        }
+        else
+        {
+            return Dmg;
+        }
+
+    }
 }

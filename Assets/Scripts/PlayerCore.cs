@@ -22,7 +22,7 @@ public class PlayerCore : MonoBehaviour
     bool isGrounded = false;
     public int punchIndex = 1;
     float MouseWorldX;
-    bool isMouseRightOfPlayer;
+    public bool isMouseRightOfPlayer;
     float playerDirection;
 
     // Start is called before the first frame update
@@ -71,6 +71,33 @@ public class PlayerCore : MonoBehaviour
         }
         if (playerDirection != 0) spriteGameObject.GetComponent<Scale>().flip = playerDirection;
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (IsGrounded())
+        {
+            if (isGrounded == false)
+            {
+                spriteGameObject.GetComponent<Scale>().scale_x = 1.25f;
+                spriteGameObject.GetComponent<Scale>().scale_y = 0.75f;
+            }
+
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+
+        if (thePlayerAttack.attackTimer != 0)
+        {
+            thePlayerAttack.attackTimer--;
+        }
+        if (thePlayerAttack.attackTimer == 0 && currentState == 1)
+        {
+            currentState = 0;
+        }
     }
 
     public bool IsGrounded()

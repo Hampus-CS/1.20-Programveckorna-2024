@@ -16,6 +16,7 @@ public class PlayerMove : MonoBehaviour
         thePlayerCore = gameObject.GetComponent<PlayerCore>();
         theTransform = gameObject.GetComponent<Transform>();
         theRigidbody = gameObject.GetComponent<Rigidbody2D>();
+        thePlayerAttack = gameObject.GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
