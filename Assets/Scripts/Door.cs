@@ -52,6 +52,8 @@ public class Door : MonoBehaviour
         /*
             
         */
+        main_camera.spawnManager = spawnManager;
+
         main_camera.transition.position = new Vector3(main_camera.transform.position.x - (45), main_camera.transform.position.y, 10f);
 
         main_camera.side = 0;

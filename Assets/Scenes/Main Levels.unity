@@ -48764,6 +48764,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1 &92339434
 GameObject:
   m_ObjectHideFlags: 0
@@ -49331,6 +49332,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1 &191146983
 GameObject:
   m_ObjectHideFlags: 0
@@ -49476,7 +49478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1 &200530747
 GameObject:
   m_ObjectHideFlags: 0
@@ -49659,7 +49661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!114 &215454178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49828,6 +49830,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1001 &274147261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50277,6 +50280,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1001 &319109807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50492,7 +50496,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1001 &331871232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50812,7 +50816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1001 &407207436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51964,7 +51968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1 &870353155
 GameObject:
   m_ObjectHideFlags: 0
@@ -52110,7 +52114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1 &890963401
 GameObject:
   m_ObjectHideFlags: 0
@@ -52423,6 +52427,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1001 &970758430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52629,7 +52634,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1001 &989241734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53470,7 +53475,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1 &1174052222
 GameObject:
   m_ObjectHideFlags: 0
@@ -53675,7 +53680,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1001 &1207370960
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80188,6 +80193,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1 &1566117181
 GameObject:
   m_ObjectHideFlags: 0
@@ -80333,7 +80339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerIsNear: 0
   playerTeleport: 0
-  camera_object: {fileID: 0}
+  camera_object: {fileID: 1904953037}
 --- !u!1 &1569587772
 GameObject:
   m_ObjectHideFlags: 0
@@ -80551,6 +80557,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1 &1577757254
 GameObject:
   m_ObjectHideFlags: 0
@@ -81275,7 +81282,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82011,6 +82018,7 @@ MonoBehaviour:
   transition: {fileID: 1811401213}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!114 &1904953042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82441,6 +82449,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1 &1985129861
 GameObject:
   m_ObjectHideFlags: 0
@@ -82966,6 +82975,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   side: 1
   timer: 0
+  spawnManager: {fileID: 0}
 --- !u!1001 &2126384639
 PrefabInstance:
   m_ObjectHideFlags: 0
