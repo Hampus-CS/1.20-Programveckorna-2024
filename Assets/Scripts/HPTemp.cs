@@ -13,6 +13,6 @@ public class HPTemp : MonoBehaviour
 
     void Update()
     {
-        TheTMP.text = "HP: " + PlayerMovement.PlayerHealth;
+        TheTMP.text = "HP: " + PlayerMovement.playerHealth;
     }
 }

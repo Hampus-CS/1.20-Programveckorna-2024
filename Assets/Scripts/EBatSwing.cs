@@ -18,7 +18,7 @@ public class EBatSwing : MonoBehaviour
         for (int i = 0; i < HitPlayer.Length; i++)
         {
 
-            PlayerMovement.PlayerHealth -= ModDamage(2);
+            PlayerMovement.playerHealth -= ModDamage(2);
             //HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().screen_shake.GetComponent<CameraController>().shake = 50f;
         }
     }
