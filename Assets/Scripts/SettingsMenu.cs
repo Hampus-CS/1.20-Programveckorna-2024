@@ -18,15 +18,18 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
-        resolutions = Screen.resolutions;
-        resolutionDropdown.ClearOptions();
 
-        List<string> options = new List<string>();
-
+        // The game and menu volume.
         float savedVolume = PlayerPrefs.GetFloat(VolumePrefsKey, 1.0f);
         float savedGameVolume = PlayerPrefs.GetFloat(GameVolumePrefsKey, 1.0f);
         SetVolume(savedVolume);
         SetGameVolume(savedGameVolume);
+
+        // Screens resolution.
+        resolutions = Screen.resolutions;
+        resolutionDropdown.ClearOptions();
+
+        List<string> options = new List<string>();
 
         int currentResolutionIndex = 0;
         for (int i = 0; i < resolutions.Length; i++)
@@ -68,11 +71,6 @@ public class SettingsMenu : MonoBehaviour
             gameAudioMixer.SetFloat("GameVolume", gameVolume);
         }
         PlayerPrefs.SetFloat(GameVolumePrefsKey, gameVolume);
-    }
-
-    public void SetQuality(int qualityIndex)
-    {
-        QualitySettings.SetQualityLevel(qualityIndex);
     }
 
     public void SetFullscreen(bool isFullscreen)
