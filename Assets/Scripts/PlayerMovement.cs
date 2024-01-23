@@ -7,34 +7,29 @@ using Debug = UnityEngine.Debug;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public LayerMask mask;
-    public GameObject sprite;
+    public Rigidbody2D theRigidbody;
+    public GameObject spriteGameObject;
     float speed = 0f;
-    public ParticleSystem dust;
-    public GameObject slash;
-    [SerializeField] GameObject Punch;
-    [SerializeField] GameObject BatSwing;
-    [SerializeField] GameObject BatThrow;
-    [SerializeField] GameObject KnifeSwing;
-    [SerializeField] GameObject KnifeThrow;
-    public Transform id;
-    public GameObject screen_shake;
-    float flip;
-    public int Grounds = 0;
-    public LayerMask GMask;
+    [SerializeField] GameObject punch;
+    [SerializeField] GameObject batSwing;
+    [SerializeField] GameObject batThrow;
+    [SerializeField] GameObject knifeSwing;
+    [SerializeField] GameObject knifeThrow;
+    public Transform theTransform;
+    public GameObject screenShake;
+    public LayerMask groundMask;
     float raycastLength = 0.5f;
-    Transform TheT;
-    [SerializeField] float PlayerSpeed;
-    [SerializeField] float PlayerJumpHeight;
-    bool MouseRightOfPlayer;
-    int State;
-    int PunchTimer;
-    public static int PlayerHealth;
-    [SerializeField] SpriteRenderer TheSR;
-    bool grounded = false;
-    float mouse_side = 1;
-    public int punch_index = 1;
+    [SerializeField] float playerMaxSpeed;
+    [SerializeField] float playerMaxJumpHeight;
+    bool isMouseRightOfPlayer;
+    public int currentState;
+    public int attackTimer;
+    public static int playerHealth;
+    [SerializeField] SpriteRenderer theSpriteRenderer;
+    bool isGrounded = false;
+    public int punchIndex = 1;
+    float MouseWorldX;
+    float playerDirection;
 
     //States:
     //0: Nothing specific, can move around
@@ -45,23 +40,23 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         //GMask = LayerMask.NameToLayer("Ground");
-        TheT = gameObject.GetComponent<Transform>();
-        State = 0;
-        PlayerHealth = 3;
+        theTransform = gameObject.GetComponent<Transform>();
+        currentState = 0;
+        playerHealth = 3;
     }
 
     // Update is called once per frame
     
     void Update()
     {
-        if(PunchTimer <= 0f && State != 2) speed += ((Input.GetAxisRaw("Horizontal") * 1f) - speed) * 0.035f;
-        else speed += (0 - speed) * 0.1f;
+        //if(attackTimer <= 0f && currentState != 2) speed += ((Input.GetAxisRaw("Horizontal") * 1f) - speed) * 0.035f;
+        //else speed += (0 - speed) * 0.1f;
 
 
-        if (PlayerHealth <= 0)
-        {
-            SceneManager.LoadScene("DeathScreen");
-        }
+        //if (playerHealth <= 0)
+        //{
+        //    SceneManager.LoadScene("DeathScreen");
+        //}
         /*
             speed = 0;
         if (Input.GetKey(KeyCode.D) && State == 0)
@@ -73,33 +68,33 @@ public class PlayerMovement : MonoBehaviour
             speed--;
         }
         */
-        rb.velocity = new Vector2(speed*PlayerSpeed, rb.velocity.y);
+        //theRigidbody.velocity = new Vector2(speed*playerMaxSpeed, theRigidbody.velocity.y);
 
         // Animations
-        if (State != 2)
+        if (currentState != 2)
         {
-            if (PunchTimer <= 0f)
+            if (attackTimer <= 0f)
             {
                 if (Input.GetAxisRaw("Horizontal") != 0f)
                 {
-                    sprite.GetComponent<PlayerAnimation>().animation_state = 1;
+                    spriteGameObject.GetComponent<PlayerAnimation>().animation_state = 1;
                 }
                 else
                 {
-                    sprite.GetComponent<PlayerAnimation>().animation_state = 0;
+                    spriteGameObject.GetComponent<PlayerAnimation>().animation_state = 0;
                 }
             }
             else
             {
                 if (ItemTracker.CurrentItemID == 0)
                 {
-                    if (punch_index == 1) sprite.GetComponent<PlayerAnimation>().animation_state = 2;
-                    else sprite.GetComponent<PlayerAnimation>().animation_state = 3;
+                    if (punchIndex == 1) spriteGameObject.GetComponent<PlayerAnimation>().animation_state = 2;
+                    else spriteGameObject.GetComponent<PlayerAnimation>().animation_state = 3;
                 }
 
                 if (ItemTracker.CurrentItemID == 1)
                 {
-                    sprite.GetComponent<PlayerAnimation>().animation_state = 4;
+                    spriteGameObject.GetComponent<PlayerAnimation>().animation_state = 4;
                 }
             }
         }
@@ -107,134 +102,136 @@ public class PlayerMovement : MonoBehaviour
         {
             if (ItemTracker.CurrentItemID == 0)
             {
-                sprite.GetComponent<PlayerAnimation>().animation_state = 5;
+                spriteGameObject.GetComponent<PlayerAnimation>().animation_state = 5;
             }
 
             if (ItemTracker.CurrentItemID == 1)
             {
-                sprite.GetComponent<PlayerAnimation>().animation_state = 6;
+                spriteGameObject.GetComponent<PlayerAnimation>().animation_state = 6;
             }
         }
-        
+
         //
 
-        float MouseWorldX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
-        if (MouseWorldX > TheT.position.x)
+        MouseWorldX = Camera.main.ScreenToWorldPoint(Input.mousePosition).x;
+        if (MouseWorldX > theTransform.position.x)
         {
-            MouseRightOfPlayer = true;
+            isMouseRightOfPlayer = true;
         }
         else
         {
-            MouseRightOfPlayer = false;
+            isMouseRightOfPlayer = false;
         }
         
-        if (PunchTimer <= 0f)
+        if (attackTimer <= 0f)
         {
-            mouse_side = Input.GetAxisRaw("Horizontal");
+            playerDirection = Input.GetAxisRaw("Horizontal");
         }
         else
         {
-            mouse_side = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
+            playerDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition).x - transform.position.x;
         }
-        mouse_side = Mathf.Clamp(mouse_side, -1, 1);
-        if (mouse_side != -1 && mouse_side != 1)
-        {
-            if (mouse_side < 0) mouse_side = -1;
-            if (mouse_side > 0) mouse_side = 1;
-        }
-        if (mouse_side != 0) sprite.GetComponent<Scale>().flip = mouse_side;
 
-        if (Input.GetKeyDown(KeyCode.Space) && State == 0)
+        playerDirection = Mathf.Clamp(playerDirection, -1, 1);
+        if (playerDirection != -1 && playerDirection != 1)
+        {
+            if (playerDirection < 0) playerDirection = -1;
+            if (playerDirection > 0) playerDirection = 1;
+        }
+        if (playerDirection != 0) spriteGameObject.GetComponent<Scale>().flip = playerDirection;
+
+        /*
+        if (Input.GetKeyDown(KeyCode.Space) && currentState == 0)
         {
             
             if (IsGrounded())
             {
-                rb.velocity = new Vector2(rb.velocity.x, PlayerJumpHeight);
+                theRigidbody.velocity = new Vector2(theRigidbody.velocity.x, playerMaxJumpHeight);
 
-                sprite.GetComponent<Scale>().scale_x = 0.75f;
-                sprite.GetComponent<Scale>().scale_y = 1.25f;
+                spriteGameObject.GetComponent<Scale>().scale_x = 0.75f;
+                spriteGameObject.GetComponent<Scale>().scale_y = 1.25f;
             }
 
         }
-
-        if (Input.GetMouseButtonDown(0) && State == 0 && IsGrounded())
+        */
+        if (Input.GetMouseButtonDown(0) && currentState == 0 && IsGrounded())
         {
             if (ItemTracker.CurrentItemID == 0)
             {
-                punch_index = -punch_index;
+                punchIndex = -punchIndex;
 
-                if (MouseRightOfPlayer)
+                if (isMouseRightOfPlayer)
                 {
-                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x + 1.1f, transform.position.y +1), Quaternion.identity);
-                    PunchTimer = 15;
+                    GameObject Attack = Instantiate(punch, new Vector2(transform.position.x + 1.1f, transform.position.y +1), Quaternion.identity);
+                    attackTimer = 15;
                 }
                 else
                 {
-                    GameObject Attack = Instantiate(Punch, new Vector2(transform.position.x - 1.1f, transform.position.y +1), Quaternion.identity);
-                    PunchTimer = 15;
+                    GameObject Attack = Instantiate(punch, new Vector2(transform.position.x - 1.1f, transform.position.y +1), Quaternion.identity);
+                    attackTimer = 15;
                 }
             }
             if (ItemTracker.CurrentItemID == 1)
             {
-                if (MouseRightOfPlayer)
+                if (isMouseRightOfPlayer)
                 {
-                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x + 1.6f, transform.position.y+1), Quaternion.identity);
-                    PunchTimer = 30;
+                    GameObject Attack = Instantiate(batSwing, new Vector2(transform.position.x + 1.6f, transform.position.y+1), Quaternion.identity);
+                    attackTimer = 30;
                 }
                 else
                 {
-                    GameObject Attack = Instantiate(BatSwing, new Vector2(transform.position.x - 1.6f, transform.position.y+1), Quaternion.identity);
-                    PunchTimer = 30;
+                    GameObject Attack = Instantiate(batSwing, new Vector2(transform.position.x - 1.6f, transform.position.y+1), Quaternion.identity);
+                    attackTimer = 30;
                 }
             }
             if (ItemTracker.CurrentItemID == 2)
             {
-                if (MouseRightOfPlayer)
+                if (isMouseRightOfPlayer)
                 {
-                    GameObject Attack = Instantiate(KnifeSwing, new Vector2(transform.position.x + 1.1f, transform.position.y + 1), Quaternion.identity);
-                    PunchTimer = 15;
+                    GameObject Attack = Instantiate(knifeSwing, new Vector2(transform.position.x + 1.1f, transform.position.y + 1), Quaternion.identity);
+                    attackTimer = 15;
                 }
                 else
                 {
-                    GameObject Attack = Instantiate(KnifeSwing, new Vector2(transform.position.x - 1.1f, transform.position.y + 1), Quaternion.identity);
-                    PunchTimer = 15;
+                    GameObject Attack = Instantiate(knifeSwing, new Vector2(transform.position.x - 1.1f, transform.position.y + 1), Quaternion.identity);
+                    attackTimer = 15;
                 }
             }
-            State = 1;
+            currentState = 1;
             
             //Attack.GetComponent<SlashCode>().creator = id;
             //Attack.GetComponent<SlashCode>().flip = flip;
         }
-
-        if (State == 0 || State == 2)
+        /*
+        if (currentState == 0 || currentState == 2)
         {
             if (Input.GetMouseButton(1) && IsGrounded())
             {
-                State = 2;
-                TheSR.color = new Color(1, 0, 0);
+                currentState = 2;
+                theSpriteRenderer.color = new Color(1, 0, 0);
 
             }
             else
             {
-                State = 0;
-                TheSR.color = new Color(1, 1, 1);
+                currentState = 0;
+                theSpriteRenderer.color = new Color(1, 1, 1);
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.E) && State == 0 && IsGrounded() && ItemTracker.Delay == false)
+        */
+        if (Input.GetKeyDown(KeyCode.E) && currentState == 0 && IsGrounded() && ItemTracker.Delay == false)
         {
             if (ItemTracker.CurrentItemID == 1)
             {
                 ItemTracker.CurrentItemID = 0;
 
-                if (MouseRightOfPlayer)
+                if (isMouseRightOfPlayer)
                 {
-                    GameObject ThrownItem = Instantiate(BatThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
+                    GameObject ThrownItem = Instantiate(batThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
                     ThrownItem.GetComponent<BatThrow>().MovementDir = 1;
                 }
                 else
                 {
-                    GameObject ThrownItem = Instantiate(BatThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
+                    GameObject ThrownItem = Instantiate(batThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
                     ThrownItem.GetComponent<BatThrow>().MovementDir = -1;
                 }
             }
@@ -242,14 +239,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 ItemTracker.CurrentItemID = 0;
 
-                if (MouseRightOfPlayer)
+                if (isMouseRightOfPlayer)
                 {
-                    GameObject ThrownItem = Instantiate(KnifeThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
+                    GameObject ThrownItem = Instantiate(knifeThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
                     ThrownItem.GetComponent<KnifeThrow>().MovementDir = 1;
                 }
                 else
                 {
-                    GameObject ThrownItem = Instantiate(KnifeThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
+                    GameObject ThrownItem = Instantiate(knifeThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
                     ThrownItem.GetComponent<KnifeThrow>().MovementDir = -1;
                 }
             }
@@ -259,33 +256,33 @@ public class PlayerMovement : MonoBehaviour
     {
         if(IsGrounded())
         {
-            if(grounded == false)
+            if(isGrounded == false)
             {
-                sprite.GetComponent<Scale>().scale_x = 1.25f;
-                sprite.GetComponent<Scale>().scale_y = 0.75f;
+                spriteGameObject.GetComponent<Scale>().scale_x = 1.25f;
+                spriteGameObject.GetComponent<Scale>().scale_y = 0.75f;
             }
 
-            grounded = true;
+            isGrounded = true;
         }
         else
         {
-            grounded = false;
+            isGrounded = false;
         }
 
-        if (PunchTimer != 0)
+        if (attackTimer != 0)
         {
-            PunchTimer--;
+            attackTimer--;
         }
-        if (PunchTimer == 0 && State == 1)
+        if (attackTimer == 0 && currentState == 1)
         {
-            State = 0;
+            currentState = 0;
         }
     }
     bool IsGrounded()
     {
-        RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y), Vector2.down, raycastLength, GMask);
-        RaycastHit2D hitC = Physics2D.Raycast(new Vector2(TheT.position.x, TheT.position.y), Vector2.down, raycastLength, GMask);
-        RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y), Vector2.down, raycastLength, GMask);
+        RaycastHit2D hitL = Physics2D.Raycast(new Vector2(theTransform.position.x - 0.6f, theTransform.position.y), Vector2.down, raycastLength, groundMask);
+        RaycastHit2D hitC = Physics2D.Raycast(new Vector2(theTransform.position.x, theTransform.position.y), Vector2.down, raycastLength, groundMask);
+        RaycastHit2D hitR = Physics2D.Raycast(new Vector2(theTransform.position.x + 0.6f, theTransform.position.y), Vector2.down, raycastLength, groundMask);
 
         if (hitL.collider != null || hitC.collider != null || hitR.collider != null)
         {
@@ -309,7 +306,7 @@ public class PlayerMovement : MonoBehaviour
     //
     public int BlockDamage(int Dmg)
     {
-        if (State == 2)
+        if (currentState == 2)
         {
             if(ItemTracker.CurrentItemID == 0)
             {

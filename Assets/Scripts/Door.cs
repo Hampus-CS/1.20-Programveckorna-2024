@@ -60,7 +60,7 @@ public class Door : MonoBehaviour
 
         main_camera.timer = 180;
 
-        if (PlayerMovement.PlayerHealth < 5) PlayerMovement.PlayerHealth++;
+        if (PlayerMovement.playerHealth < 5) PlayerMovement.playerHealth++;
         
         ScoreTracker.Score++;
     }

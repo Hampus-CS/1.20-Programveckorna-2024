@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GroundDetector : MonoBehaviour
 {
+    /*
     [SerializeField] PlayerMovement PlayerMovementScript;
     // Start is called before the first frame update
     void Start()
@@ -35,4 +36,5 @@ public class GroundDetector : MonoBehaviour
         }
         
     }
+    */
 }

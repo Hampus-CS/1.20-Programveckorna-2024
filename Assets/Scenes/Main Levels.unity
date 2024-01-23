@@ -54094,6 +54094,10 @@ PrefabInstance:
       propertyPath: PlayerJumpHeight
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1845516202337314881, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: screenShake
+      value: 
+      objectReference: {fileID: 1904953037}
     - target: {fileID: 3392757112018701262, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
       propertyPath: m_Enabled
       value: 0
