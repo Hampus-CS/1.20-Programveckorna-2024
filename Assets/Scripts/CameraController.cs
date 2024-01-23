@@ -14,16 +14,35 @@ public class CameraController : MonoBehaviour
     private RoomManager roomManager;
     public float shake = 0f;
     public Transform current_camera;
-    public GameObject transition;
-
+    public Transform transition;
+    public int side = -1;
+    public int timer = 0;
+    public SpawnManager spawnManager;
     private void Start()
     {
         roomManager = RoomManager.Instance;
         shake = 5f;
+        transition.position = new Vector3(transform.position.x + (45 * side), transform.position.y, 10f);
     }
 
     private void LateUpdate()
     {
+        transition.position += (new Vector3(transform.position.x + (45 * side), transform.position.y, 10f) - transition.position) * 0.035f;
+
+        if(timer == 60)
+        {
+            int nextRoomIndex = RoomManager.Instance.GetNextRoomIndex();
+            RoomManager.Instance.TeleportPlayer(nextRoomIndex);
+            spawnManager.DeactivateRoom();
+        }
+
+        if (timer == 1)
+        {
+            side = 1;
+        }
+
+        if (timer > 0) timer--;
+
         shake += (0f - shake) * 0.1f;
         /*
         if (!isTargetAlive)

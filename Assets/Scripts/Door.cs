@@ -7,6 +7,7 @@ public class Door : MonoBehaviour
     private SpawnManager spawnManager;
     public bool playerIsNear;
     public bool playerTeleport;
+    public GameObject camera_object;
     //public GameObject camera;
 
     private void Start()
@@ -47,11 +48,19 @@ public class Door : MonoBehaviour
 
     private void TriggerTeleportation()
     {
-            int nextRoomIndex = RoomManager.Instance.GetNextRoomIndex();
-            RoomManager.Instance.TeleportPlayer(nextRoomIndex);
-            spawnManager.DeactivateRoom();
+        CameraController main_camera = camera_object.GetComponent<CameraController>();
+        /*
             
-        if(PlayerMovement.PlayerHealth < 5) PlayerMovement.PlayerHealth++;
+        */
+        main_camera.spawnManager = spawnManager;
+
+        main_camera.transition.position = new Vector3(main_camera.transform.position.x - (45), main_camera.transform.position.y, 10f);
+
+        main_camera.side = 0;
+
+        main_camera.timer = 180;
+
+        if (PlayerMovement.PlayerHealth < 5) PlayerMovement.PlayerHealth++;
         
         ScoreTracker.Score++;
     }
