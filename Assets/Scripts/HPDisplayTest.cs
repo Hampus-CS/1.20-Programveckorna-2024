@@ -15,6 +15,6 @@ public class HPDisplayTest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        TMP.text = "HP: " + PlayerMovement.PlayerHealth;
+        TMP.text = "HP: " + PlayerMovement.playerHealth;
     }
 }

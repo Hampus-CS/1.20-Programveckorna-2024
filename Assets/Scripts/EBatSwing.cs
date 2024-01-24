@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EBatSwing : MonoBehaviour
 {
-    // Start is called before the first frame update
     Transform TheT;
     float Timer = 50f;
     RaycastHit2D[] HitPlayer;
@@ -17,9 +16,8 @@ public class EBatSwing : MonoBehaviour
         HitPlayer = Physics2D.BoxCastAll(TheT.position, new Vector2(2, 1), 0f, new Vector2(1, 0), 0f, PMask);
         for (int i = 0; i < HitPlayer.Length; i++)
         {
-
-            PlayerMovement.PlayerHealth -= ModDamage(2);
-            HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().screen_shake.GetComponent<CameraController>().shake = 50f;
+            PlayerCore.playerHealth -= ModDamage(2);
+            HitPlayer[0].collider.gameObject.GetComponent<PlayerCore>().screenShake.GetComponent<CameraController>().shake = 50f;
         }
     }
 
@@ -36,8 +34,8 @@ public class EBatSwing : MonoBehaviour
     private int ModDamage(int Dmg)
     {
         int Damage = Dmg;
-        Damage = HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().BlockDamage(Damage);
-        HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().screen_shake.GetComponent<CameraController>().shake = 50f;
+        Damage = HitPlayer[0].collider.gameObject.GetComponent<PlayerBlock>().BlockDamage(Damage);
+        HitPlayer[0].collider.gameObject.GetComponent<PlayerCore>().screenShake.GetComponent<CameraController>().shake = 50f;
         if (Damage < 0)
         {
             Damage = 0;

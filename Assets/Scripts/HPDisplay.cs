@@ -20,23 +20,23 @@ public class HPDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerMovement.PlayerHealth == 5)
+        if(PlayerCore.playerHealth == 5)
         {
             TheImg.sprite = HP5;
         }
-        if (PlayerMovement.PlayerHealth == 4)
+        if (PlayerCore.playerHealth == 4)
         {
             TheImg.sprite = HP4;
         }
-        if (PlayerMovement.PlayerHealth == 3)
+        if (PlayerCore.playerHealth == 3)
         {
             TheImg.sprite = HP3;
         }
-        if (PlayerMovement.PlayerHealth == 2)
+        if (PlayerCore.playerHealth == 2)
         {
             TheImg.sprite = HP2;
         }
-        if (PlayerMovement.PlayerHealth == 1)
+        if (PlayerCore.playerHealth == 1)
         {
             TheImg.sprite = HP1;
         }

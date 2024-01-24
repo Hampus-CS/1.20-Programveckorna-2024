@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ItemTracker : MonoBehaviour
 {
-    //CurrentItemID är variabeln som används för att hålla koll på vilket item spelaren håller i.
     public static int CurrentItemID;
     public static int CurrentItemDurability = 0;
     public static bool Delay;

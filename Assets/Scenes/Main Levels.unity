@@ -54086,22 +54086,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1093053045036542246, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-      propertyPath: screen_shake
+    - target: {fileID: 1845516202337314881, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: screenShake
       value: 
       objectReference: {fileID: 1904953037}
-    - target: {fileID: 1093053045036542246, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-      propertyPath: PlayerJumpHeight
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3392757112018701262, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4653603586096087211, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-      propertyPath: m_SortingOrder
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7260971499489196865, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
       propertyPath: m_Name
       value: Bobo Bobison
