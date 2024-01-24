@@ -71,5 +71,42 @@ public class PlayerAttack : MonoBehaviour
             }
             thePlayerCore.currentState = 1;
         }
+
+
+
+
+        if (Input.GetKeyDown(KeyCode.E) && thePlayerCore.currentState == 0 && thePlayerCore.IsGrounded() && ItemTracker.Delay == false)
+        {
+            if (ItemTracker.CurrentItemID == 1)
+            {
+                ItemTracker.CurrentItemID = 0;
+
+                if (thePlayerCore.isMouseRightOfPlayer)
+                {
+                    GameObject ThrownItem = Instantiate(batThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<BatThrow>().MovementDir = 1;
+                }
+                else
+                {
+                    GameObject ThrownItem = Instantiate(batThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<BatThrow>().MovementDir = -1;
+                }
+            }
+            if (ItemTracker.CurrentItemID == 2)
+            {
+                ItemTracker.CurrentItemID = 0;
+
+                if (thePlayerCore.isMouseRightOfPlayer)
+                {
+                    GameObject ThrownItem = Instantiate(knifeThrow, new Vector2(transform.position.x + 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<KnifeThrow>().MovementDir = 1;
+                }
+                else
+                {
+                    GameObject ThrownItem = Instantiate(knifeThrow, new Vector2(transform.position.x - 1.6f, transform.position.y + 1), Quaternion.identity);
+                    ThrownItem.GetComponent<KnifeThrow>().MovementDir = -1;
+                }
+            }
+        }
     }
 }

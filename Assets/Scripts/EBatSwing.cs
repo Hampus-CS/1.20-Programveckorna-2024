@@ -34,8 +34,8 @@ public class EBatSwing : MonoBehaviour
     private int ModDamage(int Dmg)
     {
         int Damage = Dmg;
-        Damage = HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().BlockDamage(Damage);
-        HitPlayer[0].collider.gameObject.GetComponent<PlayerMovement>().screenShake.GetComponent<CameraController>().shake = 50f;
+        Damage = HitPlayer[0].collider.gameObject.GetComponent<PlayerBlock>().BlockDamage(Damage);
+        HitPlayer[0].collider.gameObject.GetComponent<PlayerCore>().screenShake.GetComponent<CameraController>().shake = 50f;
         if (Damage < 0)
         {
             Damage = 0;
