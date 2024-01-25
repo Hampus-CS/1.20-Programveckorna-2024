@@ -18,8 +18,11 @@ public class CameraController : MonoBehaviour
     public int side = -1;
     public int timer = 0;
     public SpawnManager spawnManager;
+    public float shake_amount = 1f;
     private void Start()
     {
+        shake_amount = PlayerPrefs.GetFloat("ScreenShake");
+
         roomManager = RoomManager.Instance;
         shake = 5f;
         transition.position = new Vector3(transform.position.x + (45 * side), transform.position.y, 10f);
@@ -50,7 +53,7 @@ public class CameraController : MonoBehaviour
             return;
         }
         */
-        transform.position += (new Vector3(current_camera.position.x + Random.Range(-shake, shake), current_camera.position.y + Random.Range(-shake, shake), -10) - transform.position)*0.1f;
+        transform.position += (new Vector3(current_camera.position.x + Random.Range(-shake*shake_amount, shake * shake_amount), current_camera.position.y + Random.Range(-shake * shake_amount, shake * shake_amount), -10) - transform.position)*0.1f;
     }
 }
 

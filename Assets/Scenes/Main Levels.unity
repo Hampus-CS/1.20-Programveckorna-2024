@@ -48765,6 +48765,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1 &92339434
 GameObject:
   m_ObjectHideFlags: 0
@@ -49333,6 +49334,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1 &191146983
 GameObject:
   m_ObjectHideFlags: 0
@@ -49831,6 +49833,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1001 &274147261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50281,6 +50284,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1001 &319109807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52428,6 +52432,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1001 &970758430
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80182,6 +80187,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1 &1566117181
 GameObject:
   m_ObjectHideFlags: 0
@@ -80546,6 +80552,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1 &1577757254
 GameObject:
   m_ObjectHideFlags: 0
@@ -82007,6 +82014,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!114 &1904953042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82438,6 +82446,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1 &1985129861
 GameObject:
   m_ObjectHideFlags: 0
@@ -82964,6 +82973,7 @@ MonoBehaviour:
   side: 1
   timer: 0
   spawnManager: {fileID: 0}
+  shake_amount: 1
 --- !u!1001 &2126384639
 PrefabInstance:
   m_ObjectHideFlags: 0

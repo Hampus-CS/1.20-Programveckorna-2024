@@ -12,6 +12,8 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixer gameAudioMixer;
     private const string VolumePrefsKey = "Volume";
     private const string GameVolumePrefsKey = "GameVolume";
+    private const string GameScreenShakePrefsKey = "ScreenShake";
+    public float settingScreenShake = 0f;
 
     public TMPro.TMP_Dropdown resolutionDropdown;
     Resolution[] resolutions;
@@ -22,8 +24,10 @@ public class SettingsMenu : MonoBehaviour
         // The game and menu volume.
         float savedVolume = PlayerPrefs.GetFloat(VolumePrefsKey, 1.0f);
         float savedGameVolume = PlayerPrefs.GetFloat(GameVolumePrefsKey, 1.0f);
+        float savedScreenShake = PlayerPrefs.GetFloat(GameScreenShakePrefsKey, 0.25f);
         SetVolume(savedVolume);
         SetGameVolume(savedGameVolume);
+        SetScreenShake(savedScreenShake);
 
         // Screens resolution.
         resolutions = Screen.resolutions;
@@ -71,6 +75,12 @@ public class SettingsMenu : MonoBehaviour
             gameAudioMixer.SetFloat("GameVolume", gameVolume);
         }
         PlayerPrefs.SetFloat(GameVolumePrefsKey, gameVolume);
+    }
+
+    public void SetScreenShake(float screeners_of_the_shakers)
+    {
+        PlayerPrefs.SetFloat(GameScreenShakePrefsKey, screeners_of_the_shakers);
+        settingScreenShake = screeners_of_the_shakers;
     }
 
     public void SetFullscreen(bool isFullscreen)

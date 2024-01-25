@@ -157,6 +157,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Destroy(gameObject);
+        }
+
         if (PunchTimer <= 0f)
         {
             mouse_side = speed;
