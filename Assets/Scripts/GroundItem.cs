@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GroundItem : MonoBehaviour
 {
     bool PlayerOnItem = false;
     SpriteRenderer TheSR;
-    [SerializeField] public int ThisItemID;
+    public int ThisItemID = 1;
     [SerializeField] Sprite BatSprite;
     [SerializeField] Sprite KnifeSprite;
     //IDs:
@@ -14,6 +15,11 @@ public class GroundItem : MonoBehaviour
     //2: Knife
     void Start()
     {
+        if (Random.Range(0f, 100f) <= 15f)
+        {
+            ThisItemID = 2;
+        }
+
         TheSR = gameObject.GetComponent<SpriteRenderer>();
         if(ThisItemID == 1)
         {
