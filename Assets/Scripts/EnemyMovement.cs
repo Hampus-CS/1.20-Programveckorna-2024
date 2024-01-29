@@ -1,4 +1,6 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
+using Debug = UnityEngine.Debug;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -31,6 +33,9 @@ public class EnemyMovement : MonoBehaviour
     int punch_index = 1;
 
     public int ItemID = 1;
+    // Item ID 0 = Hands
+    // Item ID 1 = Baseball bat
+    
     //States:
     //0: Idle
     //1: Fighting
@@ -43,6 +48,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         TheSR.color = EColors[ItemID];
+
     }
 
     // Update is called once per frame
