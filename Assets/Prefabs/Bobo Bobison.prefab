@@ -252,6 +252,7 @@ MonoBehaviour:
   playerMaxJumpHeight: 12
   currentState: 0
   punchIndex: 1
+  isMouseRightOfPlayer: 0
 --- !u!114 &4727412462815052696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,7 +281,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 605c2063d62d2e1478c95520fa949e99, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -306,7 +307,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

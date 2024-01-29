@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 95681942}
   - {fileID: 1577757255}
@@ -48448,6 +48449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 628223438}
   - {fileID: 651240126}
@@ -48838,7 +48840,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1868871645788699674, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
       propertyPath: m_SortingOrder
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
       propertyPath: m_Name
@@ -51149,6 +51151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 1219254543}
   - {fileID: 10237538}
@@ -51621,6 +51624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 2075861822}
   - {fileID: 1291230337}
@@ -52270,6 +52274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 1349349118}
   - {fileID: 1252556137}
@@ -52967,6 +52972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 5025537148757359115}
   - {fileID: 6313993640594848476}
@@ -53534,6 +53540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 2061083776}
   - {fileID: 1349264443}
@@ -53899,6 +53906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 1403444462}
   - {fileID: 1158925885}
@@ -80388,6 +80396,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 1345121538}
   - {fileID: 2064133554}
@@ -81862,6 +81871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 8392846869750273752, guid: c8cf0dd4752fd7340bea3c6df47caa95, type: 3}
+  weapon: {fileID: 2834770162720596824, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
   enemySpawnPoints:
   - {fileID: 1150734145}
   - {fileID: 456933325}
