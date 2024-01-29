@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject batThrow;
     [SerializeField] GameObject knifeSwing;
     [SerializeField] GameObject knifeThrow;
+    [SerializeField] AudioSource attackSource;
 
     public int attackTimer;
 
@@ -70,6 +71,7 @@ public class PlayerAttack : MonoBehaviour
                 }
             }
             thePlayerCore.currentState = 1;
+            attackSource.Play();
         }
 
 

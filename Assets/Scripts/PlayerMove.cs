@@ -9,6 +9,8 @@ public class PlayerMove : MonoBehaviour
     Rigidbody2D theRigidbody;
     PlayerAttack thePlayerAttack;
 
+    [SerializeField] AudioSource jumpSource;
+
     float speed = 0f;
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,8 @@ public class PlayerMove : MonoBehaviour
 
                 thePlayerCore.spriteGameObject.GetComponent<Scale>().scale_x = 0.75f;
                 thePlayerCore.spriteGameObject.GetComponent<Scale>().scale_y = 1.25f;
+
+                jumpSource.Play();
             }
 
         }

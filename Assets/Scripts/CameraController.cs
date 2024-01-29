@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Debug = UnityEngine.Debug;
-using System.Collections.Specialized;
-using UnityEditorInternal;
 
 public class CameraController : MonoBehaviour
 {
