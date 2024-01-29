@@ -47,6 +47,10 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        // Assign a random number between 0 and 1 to ItemID
+        ItemID = Random.Range(0, 2);
+        
         TheSR.color = EColors[ItemID];
 
     }
