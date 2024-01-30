@@ -8,6 +8,9 @@ public class BatSwing : MonoBehaviour
     Transform TheT;
     RaycastHit2D[] HitEnemies;
     LayerMask EMask;
+
+    [SerializeField] AudioSource hitSource;
+    [SerializeField] AudioSource breakSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +25,13 @@ public class BatSwing : MonoBehaviour
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 25f;
             Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
 
+            hitSource.Play();
+
             ItemTracker.CurrentItemDurability--;
             if (ItemTracker.CurrentItemDurability <= 0)
             {
                 ItemTracker.CurrentItemID = 0;
+                breakSource.Play();
             }
         }
     }
