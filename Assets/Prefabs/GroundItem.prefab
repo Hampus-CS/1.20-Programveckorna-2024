@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 62d84c93d71a7ab45a990f92a65ac9a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd4634df81765d94e98812ea7546ea8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThisItemID: 0
+  ThisItemID: 1
   BatSprite: {fileID: 21300000, guid: 62d84c93d71a7ab45a990f92a65ac9a9, type: 3}
   KnifeSprite: {fileID: 21300000, guid: 03ebace71e029ab4c810ebf2c05e6a0b, type: 3}
   batPickUpSource: {fileID: 5665357034601070985}

@@ -8,6 +8,7 @@ public class SpawnManager : MonoBehaviour
 {
     //public GameObject playerPrefab;
     public GameObject enemyPrefab;
+    public GameObject weapon;
     //public Transform playerSpawnPoint;
     public Transform[] enemySpawnPoints;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
@@ -39,6 +40,12 @@ public class SpawnManager : MonoBehaviour
         foreach (Transform spawnPoint in enemySpawnPoints)
         {
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+
+            if (Random.Range(0f, 100f) <= 30f)
+            {
+                GameObject weapon_pickup = Instantiate(weapon, spawnPoint.position + new Vector3(Random.Range(-0.3f, 0.3f), -0.5f, 0f), Quaternion.identity);
+            }
+
             enemy.GetComponent<EnemyMovement>().screen_shake = screen_shake;
             spawnedEnemies.Add(enemy);
             Debug.Log("Spawned enemy at " + spawnPoint.position);

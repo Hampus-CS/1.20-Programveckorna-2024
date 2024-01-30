@@ -19,11 +19,11 @@ public class GroundItem : MonoBehaviour
     void Start()
     {
         TheSR = gameObject.GetComponent<SpriteRenderer>();
-        if(ThisItemID == 1)
+        if (ThisItemID == 1)
         {
             TheSR.sprite = BatSprite;
         }
-        if(ThisItemID == 2)
+        if (ThisItemID == 2)
         {
             TheSR.sprite = KnifeSprite;
         }

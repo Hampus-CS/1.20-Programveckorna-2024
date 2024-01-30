@@ -1,4 +1,6 @@
 using UnityEngine;
+using Random = UnityEngine.Random;
+using Debug = UnityEngine.Debug;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -31,6 +33,9 @@ public class EnemyMovement : MonoBehaviour
     int punch_index = 1;
 
     public int ItemID = 1;
+    // Item ID 0 = Hands
+    // Item ID 1 = Baseball bat
+    
     //States:
     //0: Idle
     //1: Fighting
@@ -42,7 +47,12 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        // Assign a random number between 0 and 1 to ItemID
+        ItemID = Random.Range(0, 2);
+        
         TheSR.color = EColors[ItemID];
+
     }
 
     // Update is called once per frame
@@ -157,6 +167,11 @@ public class EnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Destroy(gameObject);
+        }
+
         if (PunchTimer <= 0f)
         {
             mouse_side = speed;
