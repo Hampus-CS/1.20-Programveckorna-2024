@@ -6,10 +6,8 @@ using Debug = UnityEngine.Debug;
 
 public class SpawnManager : MonoBehaviour
 {
-    //public GameObject playerPrefab;
     public GameObject enemyPrefab;
     public GameObject weapon;
-    //public Transform playerSpawnPoint;
     public Transform[] enemySpawnPoints;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
     private bool isActive = false;
@@ -26,13 +24,6 @@ public class SpawnManager : MonoBehaviour
             Debug.Log("Room Activated");
         }
     }
-
-    /*
-    private void SpawnPlayer()
-    {
-        Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity);
-    }
-    */
 
     private void SpawnEnemies()
     {

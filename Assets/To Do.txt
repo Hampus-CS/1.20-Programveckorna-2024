@@ -1,8 +1,0 @@
-1. Sort and clean up code in the "Scripts" folder.
-
-2. Sort and section up the sprites in "Sprites" folder.
-
-3. Remove old unused scenes from "Scenes" folder.
-
-4. Check if you find something which is old or unused, if so the remove it.
-

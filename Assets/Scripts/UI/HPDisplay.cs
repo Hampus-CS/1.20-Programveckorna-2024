@@ -11,11 +11,6 @@ public class HPDisplay : MonoBehaviour
     [SerializeField] Sprite HP2;
     [SerializeField] Sprite HP1;
     [SerializeField] Image TheImg;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

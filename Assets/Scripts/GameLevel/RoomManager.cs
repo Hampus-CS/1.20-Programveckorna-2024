@@ -81,22 +81,6 @@ public class RoomManager : MonoBehaviour
             // Debug information
             Debug.Log($"Teleporting player to room {roomIndex}");
 
-            // Disable the previous camera, useless as far as i know.
-            /*
-            if (currentRoomIndex >= 0 && currentRoomIndex < cameras.Length)
-            {
-                cameras[currentRoomIndex].SetActive(false);
-                Debug.Log($"Camera for room {currentRoomIndex} disabled.");
-            }
-
-            // Enable the current camera
-            if (roomIndex >= 0 && roomIndex < cameras.Length)
-            {
-                cameras[roomIndex].SetActive(true);
-                Debug.Log($"Camera for room {roomIndex} enabled.");
-            }
-            */
-            // Teleport the player to the new room
             playerTransform.position = roomSpawnPoints[roomIndex].position;
 
             currentRoomIndex = roomIndex; // Update the current room index

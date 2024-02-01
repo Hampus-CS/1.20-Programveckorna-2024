@@ -13,9 +13,11 @@ public class GroundItem : MonoBehaviour
 
     [SerializeField] AudioSource batPickUpSource;
     [SerializeField] AudioSource knifePickUpSource;
+    
     //IDs:
     //1: Bat
     //2: Knife
+    
     void Start()
     {
         TheSR = gameObject.GetComponent<SpriteRenderer>();

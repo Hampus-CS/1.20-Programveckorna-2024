@@ -8,10 +8,12 @@ public class ItemTracker : MonoBehaviour
     public static int CurrentItemDurability = 0;
     public static bool Delay;
     public static int Timer;
+    
     //Item ID list: 
     //Fists: 0
     //Bat: 1
     //Knife: 2
+    
     void Start()
     {
         CurrentItemID = 0;

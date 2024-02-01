@@ -49,9 +49,7 @@ public class Door : MonoBehaviour
     private void TriggerTeleportation()
     {
         CameraController main_camera = camera_object.GetComponent<CameraController>();
-        /*
-            
-        */
+
         main_camera.spawnManager = spawnManager;
 
         main_camera.transition.position = new Vector3(main_camera.transform.position.x - (45), main_camera.transform.position.y, 10f);
