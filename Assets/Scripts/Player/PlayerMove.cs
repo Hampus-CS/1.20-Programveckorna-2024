@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     PlayerCore thePlayerCore;
     Transform theTransform;
-    Rigidbody2D theRigidbody;
+    public Rigidbody2D theRigidbody;
     PlayerAttack thePlayerAttack;
 
     [SerializeField] AudioSource jumpSource;

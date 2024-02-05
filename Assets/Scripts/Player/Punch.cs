@@ -26,6 +26,13 @@ public class Punch : MonoBehaviour
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 15f;
             Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
 
+            HitEnemies[i].collider.gameObject.GetComponent<BossMovement>().hp--;
+
+            HitEnemies[i].collider.gameObject.GetComponent<BossMovement>().flash = 10f;
+            HitEnemies[i].collider.gameObject.GetComponent<BossMovement>().knockback = 10f;
+            HitEnemies[i].collider.gameObject.GetComponent<BossMovement>().screen_shake.GetComponent<CameraController>().shake = 15f;
+            Instantiate(HitEnemies[i].collider.gameObject.GetComponent<BossMovement>().blood, transform.position, Quaternion.identity);
+
             hitSource.Play();
         }
     }
