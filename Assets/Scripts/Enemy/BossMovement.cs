@@ -2,6 +2,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using Debug = UnityEngine.Debug;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class BossMovement : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class BossMovement : MonoBehaviour
     public GameObject train_1;
     public GameObject train_2;
     public GameObject train_3;
+    public Slider health_bar;
+    public GameObject credits;
 
     public int ItemID = 0;
     // Item ID 0 = Hands
@@ -48,7 +51,8 @@ public class BossMovement : MonoBehaviour
     //1: Fighting
     //2: Winding Attack
     //3: Attacking
-    public int hp = 3;
+    public int hp = 20;
+    public int max_hp = 20;
     //bool hit = false;
 
     // Start is called before the first frame update
@@ -65,7 +69,109 @@ public class BossMovement : MonoBehaviour
     void Update()
     {
         //Animations
-        
+
+        AnimationCode();
+
+        health_bar.value = hp;
+        health_bar.maxValue = max_hp;
+
+        if (hp <= 0)
+        {
+            credits.SetActive(true);
+
+            Destroy(id);
+        }
+        if (state == 2)
+        {
+            TheSR.color = new Color(1, 1, 0);
+        }
+        else
+        {
+            TheSR.color = EColors[ItemID];
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            Destroy(gameObject);
+        }
+
+        Flip();
+
+        if (IsGrounded())
+        {
+            if (grounded == false)
+            {
+                screen_shake.GetComponent<CameraController>().shake = 25f;
+                train_1.GetComponent<Flash>().flash = 15f;
+                train_2.GetComponent<Flash>().flash = 15f;
+                train_3.GetComponent<Flash>().flash = 15f;
+                flash = 15f;
+
+                if (player.GetComponent<PlayerCore>().IsGrounded())
+                {
+                    GameObject Attack = Instantiate(Punch, new Vector2(player_transform.position.x, player_transform.position.y + 1), Quaternion.identity);
+                }
+
+                sprite.GetComponent<Scale>().scale_x = 1.25f;
+                sprite.GetComponent<Scale>().scale_y = 0.75f;
+
+                timer = 40;
+                state = 4;
+            }
+
+            grounded = true;
+
+            HuntingPlayer();
+        }
+        else
+        {
+            if(state == 1)
+            {
+                if(transform.position.y >= 15f)
+                {
+                    transform.position = new Vector2(position_target.x, 12f);
+                    rb.velocity = new Vector2(rb.velocity.x, 0f);
+
+                    Debug.Log(transform.position);
+                }
+            }
+
+            grounded = false;
+        }
+
+        Debug.Log(state);
+
+        knockback += (0 - knockback) * 0.1f;
+
+        rb.velocity = new Vector2((speed * EnemySpeed) - ((knockback * 0.05f) * flip), rb.velocity.y);
+
+        if (flash > 0f)
+        {
+            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, flash/10);
+        }
+        else
+        {
+            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0f);
+        }
+
+        flash--;
+        flash = Mathf.Clamp(flash, 0f, 100f);
+
+        PunchCode();
+
+        if (timer > 0) timer--;
+        if (timer == 0 && state == 4)
+        {
+            timer = 20;
+            state = 1;
+        }
+    }
+
+    void AnimationCode()
+    {
         if (state == 0 || state == 1 || state == 4)
         {
             if (PunchTimer <= 0f)
@@ -84,7 +190,7 @@ public class BossMovement : MonoBehaviour
         }
         else
         {
-            if(state == 3)
+            if (state == 3)
             {
                 if (ItemID == 0)
                 {
@@ -121,8 +227,8 @@ public class BossMovement : MonoBehaviour
                 }
             }
         }
-        
-        if(state == 4)
+
+        if (state == 4)
         {
             sprite.GetComponent<EnemyAnimation>().animation_state = 0;
             flash_sprite.GetComponent<EnemyAnimation>().animation_state = 0;
@@ -139,63 +245,54 @@ public class BossMovement : MonoBehaviour
             sprite.GetComponent<EnemyAnimation>().animation_state = 1;
             flash_sprite.GetComponent<EnemyAnimation>().animation_state = 1;
         }
-        //float playerSide = (player.transform.position.x - transform.position.x);
-        //playerSide = Mathf.Clamp(playerSide, -1, 1);
+    }
 
-        //speed += ((2f * playerSide) - speed) * 0.1f;
-
-        //rb.velocity = new Vector2(speed, rb.velocity.y);
-
-
-        /*
-        if (Input.GetKeyUp("w") && grounded)
+    void HuntingPlayer()
+    {
+        if (Vector3.Distance(transform.position, player.transform.position) > 4.5f && state != 2 && state != 4)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 15f);
+            if (state != 1)
+            {
+                timer = 20;
+            }
 
-            sprite.GetComponent<Scale>().scale_x = 0.25f;
-            sprite.GetComponent<Scale>().scale_y = 2f;
-        }
-        */
+            sprite.GetComponent<Scale>().scale_x += (1.5f - sprite.GetComponent<Scale>().scale_x) * 0.25f;
+            sprite.GetComponent<Scale>().scale_y += (0.5f - sprite.GetComponent<Scale>().scale_y) * 0.25f;
 
-        if (hp <= 0) Destroy(id);
-        if (state == 2)
-        {
-            TheSR.color = new Color(1, 1, 0);
+            if (timer <= 0)
+            {
+                position_target = player_transform.position;
+                sprite.GetComponent<Scale>().scale_x = 0.5f;
+                sprite.GetComponent<Scale>().scale_y = 1.5f;
+                rb.velocity = new Vector2(rb.velocity.x, 60f);
+            }
+
+            state = 1;
         }
         else
         {
-            TheSR.color = EColors[ItemID];
+            speed = 0;
+
+            if (state == 0 || state == 1)
+            {
+                if (mouse_side == 1)
+                {
+                    PunchDirRight = true;
+                    state = 2;
+                    PunchTimer = 40;
+                }
+                else
+                {
+                    PunchDirRight = false;
+                    state = 2;
+                    PunchTimer = 40;
+                }
+            }
         }
     }
-    //void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //   if(collision.tag == "Attack" && hit == false)
-    //    {
-            //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y+5f);
 
-            //rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y + 5f);
-
-            //sprite.GetComponent<Scale>().scale_x = 0.25f;
-            //sprite.GetComponent<Scale>().scale_y = 2f;
-
-    //        hp--;
-
-            //speed = -speed * 50f;
-
-    //        flash = 30f;
-    //        hit = true;
-
-    //        screen_shake.GetComponent<CameraController>().shake = 15f;
-    //    }
-    //}
-
-    private void FixedUpdate()
+    void Flip()
     {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            Destroy(gameObject);
-        }
-
         if (PunchTimer <= 0f || state == 1)
         {
             mouse_side = (player_transform.position.x - transform.position.x);
@@ -212,190 +309,10 @@ public class BossMovement : MonoBehaviour
         }
         if (mouse_side != 0) sprite.GetComponent<Scale>().flip = mouse_side;
         if (mouse_side != 0) flip = mouse_side;
+    }
 
-        if (IsGrounded())
-        {
-            if (grounded == false)
-            {
-                screen_shake.GetComponent<CameraController>().shake = 25f;
-                train_1.GetComponent<Flash>().flash = 15f;
-                train_2.GetComponent<Flash>().flash = 15f;
-                train_3.GetComponent<Flash>().flash = 15f;
-                flash = 15f;
-
-                if (player.GetComponent<PlayerCore>().IsGrounded())
-                {
-                    GameObject Attack = Instantiate(Punch, new Vector2(player_transform.position.x, player_transform.position.y + 1), Quaternion.identity);
-                }
-
-                sprite.GetComponent<Scale>().scale_x = 1.25f;
-                sprite.GetComponent<Scale>().scale_y = 0.75f;
-
-                timer = 40;
-                state = 4;
-            }
-
-            grounded = true;
-
-            if (Vector3.Distance(transform.position, player.transform.position) > 4.5f && state != 2 && state != 4)
-            {
-                if (state != 1)
-                {
-                    timer = 20;
-                }
-
-                sprite.GetComponent<Scale>().scale_x += (1.5f - sprite.GetComponent<Scale>().scale_x) * 0.25f;
-                sprite.GetComponent<Scale>().scale_y += (0.5f - sprite.GetComponent<Scale>().scale_y) * 0.25f;
-
-                if (timer <= 0)
-                {
-                    position_target = player_transform.position;
-                    sprite.GetComponent<Scale>().scale_x = 0.5f;
-                    sprite.GetComponent<Scale>().scale_y = 1.5f;
-                    rb.velocity = new Vector2(rb.velocity.x, 60f);
-                }
-
-                state = 1;
-            }
-            else
-            {
-                speed = 0;
-
-                if (state == 0 || state == 1)
-                {
-                    if(mouse_side == 1)
-                    {
-                        PunchDirRight = true;
-                        state = 2;
-                        PunchTimer = 40;
-                    }
-                    else
-                    {
-                        PunchDirRight = false;
-                        state = 2;
-                        PunchTimer = 40;
-                    }
-                }
-
-
-            }
-        }
-        else
-        {
-            if(state == 1)
-            {
-                if(transform.position.y >= 15f)
-                {
-                    transform.position = new Vector2(position_target.x, 12f);
-                    rb.velocity = new Vector2(rb.velocity.x, 0f);
-
-                    Debug.Log(transform.position);
-                }
-            }
-
-            grounded = false;
-        }
-
-        Debug.Log(state);
-
-        knockback += (0 - knockback) * 0.1f;
-
-        rb.velocity = new Vector2((speed * EnemySpeed) - ((knockback * 0.05f) * flip), rb.velocity.y);
-
-        if (flash > 0f)
-        {
-            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, flash/10);
-        }
-        else
-        {
-            flash_sprite.GetComponent<SpriteRenderer>().color = new Color(1f, 0f, 0f, 0f);
-        }
-
-        flash--;
-        flash = Mathf.Clamp(flash, 0f, 100f);
-        /*
-        RaycastHit2D hitL = Physics2D.Raycast(new Vector2(TheT.position.x - 0.6f, TheT.position.y+1), Vector2.left, 5, PMask);
-        RaycastHit2D hitR = Physics2D.Raycast(new Vector2(TheT.position.x + 0.6f, TheT.position.y+1), Vector2.right, 5, PMask);
-        speed = 0;
-        if(state == 0 || state == 1)
-        {
-            if (hitL.collider != null)
-            {
-                if (ItemID == 0)
-                {
-                    if (hitL.distance <= 0.8)
-                    {
-                        PunchDirRight = false;
-                        state = 2;
-                        PunchTimer = 40;
-                    }
-                    else
-                    {
-                        speed = -1;
-                        state = 1;
-                    }
-                }
-                else if (ItemID == 1)
-                {
-                    if (hitL.distance <= 1.5)
-                    {
-                        PunchDirRight = false;
-                        state = 2;
-                        PunchTimer = 40;
-                    }
-                    else
-                    {
-                        speed = -1;
-                        state = 1;
-                    }
-                }
-                
-                
-                
-            }
-            else if (hitR.collider != null)
-            {
-                if (ItemID == 0)
-                {
-                    if (hitR.distance <= 0.8)
-                    {
-                        PunchDirRight = true;
-                        state = 2;
-                        PunchTimer = 40;
-                    }
-                    else
-                    {
-                        speed = 1;
-                        state = 1;
-                    }
-                }
-                else if (ItemID == 1)
-                {
-                    if (hitR.distance <= 1.5)
-                    {
-                        PunchDirRight = true;
-                        state = 2;
-                        PunchTimer = 60;
-                    }
-                    else
-                    {
-                        speed = 1;
-                        state = 1;
-                    }
-                }
-
-                
-            }
-            else
-            {
-                state = 0;
-            }
-
-            knockback += (0 - knockback) * 0.1f;
-
-            rb.velocity = new Vector2((speed * EnemySpeed) - ((knockback*0.05f)*flip), rb.velocity.y);
-        }
-        */
+    void PunchCode()
+    {
         if (state == 2)
         {
             PunchTimer--;
@@ -407,7 +324,7 @@ public class BossMovement : MonoBehaviour
 
                 if (PunchDirRight)
                 {
-                    if(ItemID == 0)
+                    if (ItemID == 0)
                     {
                         if (Vector3.Distance(transform.position, player.transform.position) <= 4.5f && player.GetComponent<PlayerCore>().IsGrounded())
                         {
@@ -454,13 +371,6 @@ public class BossMovement : MonoBehaviour
             knockback += (0 - knockback) * 0.1f;
 
             rb.velocity = new Vector2(-(knockback * flip), rb.velocity.y);
-        }
-
-        if (timer > 0) timer--;
-        if (timer == 0 && state == 4)
-        {
-            timer = 20;
-            state = 1;
         }
     }
 

@@ -22,6 +22,19 @@ public class mainMenu : MonoBehaviour
     
     }
 
+    public void PlayBoss()
+    {
+
+        if (musicManager != null)
+        {
+
+            musicManager.StopMainMenuMusic();
+            SceneManager.LoadScene(3);
+
+        }
+
+    }
+
     public void Quit()
     {
 
