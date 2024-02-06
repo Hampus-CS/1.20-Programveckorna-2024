@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class KnifeThrow : MonoBehaviour
@@ -14,12 +15,18 @@ public class KnifeThrow : MonoBehaviour
     RaycastHit2D[] HitEnemies;
     RaycastHit2D[] HitGrounds;
     SpriteRenderer TheSR;
+
+    [SerializeField] GameObject soundPlayer;
+
     // Start is called before the first frame update
 
     void Start()
     {
         TheSR = gameObject.GetComponent<SpriteRenderer>();
         TheRB = gameObject.GetComponent<Rigidbody2D>();
+        Instantiate(soundPlayer, new Vector3(0, 0, 0), quaternion.identity).GetComponent<MiscSoundPlayer>().ThrowSound();
+
+        //soundPlayer.ThrowSound();
         Timer = 200;
         EMask = LayerMask.GetMask("Enemy");
         GMask = LayerMask.GetMask("Ground");
@@ -55,6 +62,7 @@ public class KnifeThrow : MonoBehaviour
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().knockback = 10f;
             //HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 15f;
             Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
+            Instantiate(soundPlayer, new Vector3(0, 0, 0), quaternion.identity).GetComponent<MiscSoundPlayer>().KnifeHitSound();
             Destroy(gameObject);
         }
         HitGrounds = Physics2D.BoxCastAll(TheT.position, new Vector2(2, 1), 0f, new Vector2(1, 0), 0f, GMask);

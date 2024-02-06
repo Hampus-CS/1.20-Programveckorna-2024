@@ -10,8 +10,15 @@ public class PlayerMove : MonoBehaviour
     PlayerAttack thePlayerAttack;
 
     [SerializeField] AudioSource jumpSource;
+    [SerializeField] AudioSource stepSource1;
+    [SerializeField] AudioSource stepSource2;
+    [SerializeField] AudioSource stepSource3;
+    [SerializeField] AudioSource stepSource4;
+    [SerializeField] AudioSource stepSource5;
 
+    int stepSoundCooldown = 0;
     float speed = 0f;
+    int selectedSound = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +55,36 @@ public class PlayerMove : MonoBehaviour
                 jumpSource.Play();
             }
 
+        }
+    }
+    private void FixedUpdate()
+    {
+        stepSoundCooldown--;
+        if (Input.GetAxisRaw("Horizontal") != 0f && stepSoundCooldown <= 0 && thePlayerCore.IsGrounded())
+        {
+            stepSoundCooldown = 15;
+
+            selectedSound = Random.Range(1,5);
+            if(selectedSound == 1)
+            {
+                stepSource1.Play();
+            }
+            if (selectedSound == 2)
+            {
+                stepSource2.Play();
+            }
+            if (selectedSound == 3)
+            {
+                stepSource3.Play();
+            }
+            if (selectedSound == 4)
+            {
+                stepSource4.Play();
+            }
+            if (selectedSound == 5)
+            {
+                stepSource5.Play();
+            }
         }
     }
 }

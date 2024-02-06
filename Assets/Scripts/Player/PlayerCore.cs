@@ -16,7 +16,8 @@ public class PlayerCore : MonoBehaviour
     [SerializeField] public float playerMaxSpeed;
     [SerializeField] public float playerMaxJumpHeight;
 
-    float speed = 0f;
+    [SerializeField] AudioSource landSource;
+
     public int currentState;
     public static int playerHealth;
     bool isGrounded = false;
@@ -24,6 +25,12 @@ public class PlayerCore : MonoBehaviour
     float MouseWorldX;
     public bool isMouseRightOfPlayer;
     float playerDirection;
+    int landCooldown = 0; //Lazy band aid bug fix variable
+
+    //States
+    //0: Nothing specific, can move around
+    //1: Currently Attacking
+    //2: Currently Blocking
 
     // Start is called before the first frame update
     void Start()
@@ -75,12 +82,18 @@ public class PlayerCore : MonoBehaviour
 
     private void FixedUpdate()
     {
+        landCooldown--;
         if (IsGrounded())
         {
             if (isGrounded == false)
             {
-                spriteGameObject.GetComponent<Scale>().scale_x = 1.25f;
-                spriteGameObject.GetComponent<Scale>().scale_y = 0.75f;
+                if(landCooldown <= 0)
+                {
+                    spriteGameObject.GetComponent<Scale>().scale_x = 1.25f;
+                    spriteGameObject.GetComponent<Scale>().scale_y = 0.75f;
+                    landSource.Play();
+                    landCooldown = 10;
+                }
             }
 
             isGrounded = true;

@@ -14,6 +14,9 @@ public class BatThrow : MonoBehaviour
     RaycastHit2D[] HitEnemies;
     RaycastHit2D[] HitGrounds;
     [SerializeField] GameObject Sprite;
+
+    [SerializeField] GameObject soundPlayer;
+
     // Start is called before the first frame update
 
     void Start()
@@ -23,6 +26,9 @@ public class BatThrow : MonoBehaviour
         EMask = LayerMask.GetMask("Enemy");
         GMask = LayerMask.GetMask("Ground");
         TheT = gameObject.GetComponent<Transform>();
+
+        Instantiate(soundPlayer, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<MiscSoundPlayer>().ThrowSound();
+        /*
         HitEnemies = Physics2D.BoxCastAll(TheT.position, new Vector2(2, 2), 0f, new Vector2(1, 0), 0f, EMask);
         for (int i = 0; i < HitEnemies.Length; i++)
         {
@@ -32,6 +38,7 @@ public class BatThrow : MonoBehaviour
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 15f;
             Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
         }
+        */
     }
 
     private void FixedUpdate()
@@ -48,6 +55,7 @@ public class BatThrow : MonoBehaviour
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().knockback = 10f;
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 15f;
             Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
+            Instantiate(soundPlayer, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<MiscSoundPlayer>().BatHitSound();
             Destroy(gameObject);
         }
         HitGrounds = Physics2D.BoxCastAll(TheT.position, new Vector2(2, 1), 0f, new Vector2(1, 0), 0f, GMask);

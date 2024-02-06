@@ -48888,7 +48888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7764803890274354865, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
       propertyPath: ThisItemID
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54096,14 +54096,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 853393848920799755, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.754
+      objectReference: {fileID: 0}
+    - target: {fileID: 878924318494372224, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.746
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804758782278397291, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.699
+      objectReference: {fileID: 0}
     - target: {fileID: 1845516202337314881, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
       propertyPath: screenShake
       value: 
       objectReference: {fileID: 1904953037}
-    - target: {fileID: 4727412462815052696, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-      propertyPath: jumpSource
-      value: 
-      objectReference: {fileID: 1275150000}
+    - target: {fileID: 4193478320249545279, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.757
+      objectReference: {fileID: 0}
+    - target: {fileID: 4237682489201111085, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.743
+      objectReference: {fileID: 0}
     - target: {fileID: 7260971499489196865, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
       propertyPath: m_Name
       value: Bobo Bobison
@@ -54113,11 +54129,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
---- !u!82 &1275150000 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8643986844998823131, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-  m_PrefabInstance: {fileID: 1275149999}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1291230336
 GameObject:
   m_ObjectHideFlags: 0

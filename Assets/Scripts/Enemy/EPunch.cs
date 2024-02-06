@@ -8,14 +8,19 @@ public class EPunch : MonoBehaviour
     float Timer = 30f;
     RaycastHit2D[] HitPlayer;
     LayerMask PMask;
+
+    [SerializeField] AudioSource hitSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         PMask = LayerMask.GetMask("Player");
         TheT = gameObject.GetComponent<Transform>();
         HitPlayer = Physics2D.BoxCastAll(TheT.position, new Vector2(1,1), 0f, new Vector2(1,0), 0f, PMask);
         for (int i = 0; i < HitPlayer.Length; i++)
         {
+            hitSource.Play();
             PlayerCore.playerHealth -= ModDamage(1);
             HitPlayer[0].collider.gameObject.GetComponent<PlayerCore>().screenShake.GetComponent<CameraController>().shake = 50f;
         }
