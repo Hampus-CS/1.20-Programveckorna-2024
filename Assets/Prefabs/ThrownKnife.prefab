@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementDir: 0
   MoveSpeed: 15
+  soundPlayer: {fileID: 1673782252673047217, guid: 3970a242cd45ff644a31591aa05b1e8a, type: 3}
 --- !u!50 &4638164953231130957
 Rigidbody2D:
   serializedVersion: 4

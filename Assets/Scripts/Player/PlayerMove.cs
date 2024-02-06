@@ -10,7 +10,13 @@ public class PlayerMove : MonoBehaviour
     PlayerAttack thePlayerAttack;
 
     [SerializeField] AudioSource jumpSource;
+    [SerializeField] AudioSource stepSource1;
+    [SerializeField] AudioSource stepSource2;
+    [SerializeField] AudioSource stepSource3;
+    [SerializeField] AudioSource stepSource4;
+    [SerializeField] AudioSource stepSource5;
 
+    int stepSoundCooldown = 0;
     float speed = 0f;
     // Start is called before the first frame update
     void Start()
@@ -49,5 +55,10 @@ public class PlayerMove : MonoBehaviour
             }
 
         }
+    }
+    private void FixedUpdate()
+    {
+        stepSoundCooldown--;
+        if()
     }
 }

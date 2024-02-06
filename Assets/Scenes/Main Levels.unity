@@ -48888,7 +48888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7764803890274354865, guid: e15a8d27172fa314aaa1f53e1ac9d850, type: 3}
       propertyPath: ThisItemID
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -54100,10 +54100,18 @@ PrefabInstance:
       propertyPath: screenShake
       value: 
       objectReference: {fileID: 1904953037}
-    - target: {fileID: 4727412462815052696, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-      propertyPath: jumpSource
+    - target: {fileID: 5963206445584366164, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963206445584366164, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5963206445584366164, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 1275150000}
+      objectReference: {fileID: 8300000, guid: 4d839751d66ac80448270c5ed787842d, type: 3}
     - target: {fileID: 7260971499489196865, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
       propertyPath: m_Name
       value: Bobo Bobison
@@ -54113,11 +54121,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
---- !u!82 &1275150000 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8643986844998823131, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-  m_PrefabInstance: {fileID: 1275149999}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1291230336
 GameObject:
   m_ObjectHideFlags: 0
