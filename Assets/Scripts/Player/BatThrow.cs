@@ -28,7 +28,7 @@ public class BatThrow : MonoBehaviour
         TheT = gameObject.GetComponent<Transform>();
 
         Instantiate(soundPlayer, new Vector3(0, 0, 0), Quaternion.identity).GetComponent<MiscSoundPlayer>().ThrowSound();
-
+        /*
         HitEnemies = Physics2D.BoxCastAll(TheT.position, new Vector2(2, 2), 0f, new Vector2(1, 0), 0f, EMask);
         for (int i = 0; i < HitEnemies.Length; i++)
         {
@@ -38,6 +38,7 @@ public class BatThrow : MonoBehaviour
             HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().screen_shake.GetComponent<CameraController>().shake = 15f;
             Instantiate(HitEnemies[i].collider.gameObject.GetComponent<EnemyMovement>().blood, transform.position, Quaternion.identity);
         }
+        */
     }
 
     private void FixedUpdate()

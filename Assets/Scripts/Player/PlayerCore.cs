@@ -18,7 +18,6 @@ public class PlayerCore : MonoBehaviour
 
     [SerializeField] AudioSource landSource;
 
-    float speed = 0f;
     public int currentState;
     public static int playerHealth;
     bool isGrounded = false;
@@ -27,6 +26,11 @@ public class PlayerCore : MonoBehaviour
     public bool isMouseRightOfPlayer;
     float playerDirection;
     int landCooldown = 0; //Lazy band aid bug fix variable
+
+    //States
+    //0: Nothing specific, can move around
+    //1: Currently Attacking
+    //2: Currently Blocking
 
     // Start is called before the first frame update
     void Start()

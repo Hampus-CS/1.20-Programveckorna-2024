@@ -54096,22 +54096,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 853393848920799755, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.754
+      objectReference: {fileID: 0}
+    - target: {fileID: 878924318494372224, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.746
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804758782278397291, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.699
+      objectReference: {fileID: 0}
     - target: {fileID: 1845516202337314881, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
       propertyPath: screenShake
       value: 
       objectReference: {fileID: 1904953037}
-    - target: {fileID: 5963206445584366164, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-      propertyPath: m_Pitch
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5963206445584366164, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+    - target: {fileID: 4193478320249545279, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
       propertyPath: m_Volume
-      value: 1
+      value: 0.757
       objectReference: {fileID: 0}
-    - target: {fileID: 5963206445584366164, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 4d839751d66ac80448270c5ed787842d, type: 3}
+    - target: {fileID: 4237682489201111085, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
+      propertyPath: m_Volume
+      value: 0.743
+      objectReference: {fileID: 0}
     - target: {fileID: 7260971499489196865, guid: 711fcb4907ffe3240b75e196af0ec2e4, type: 3}
       propertyPath: m_Name
       value: Bobo Bobison
