@@ -6,12 +6,16 @@ using Debug = UnityEngine.Debug;
 
 public class SpawnManager : MonoBehaviour
 {
-    //public GameObject playerPrefab;
-    public GameObject enemyPrefab;
+
     public GameObject weapon;
-    //public Transform playerSpawnPoint;
+    public GameObject enemyPrefab;
     public Transform[] enemySpawnPoints;
     private List<GameObject> spawnedEnemies = new List<GameObject>();
+
+    public GameObject groundItemPrefab;
+    public Transform[] groundItemSpawnPoints;
+    private List<GameObject> spawnedGroundItems = new List<GameObject>();
+
     private bool isActive = false;
     public GameObject screen_shake;
 
@@ -22,17 +26,11 @@ public class SpawnManager : MonoBehaviour
         if (!isActive)
         {
             SpawnEnemies();
+            SpawnGroundItems();
             isActive = true;
             Debug.Log("Room Activated");
         }
     }
-
-    /*
-    private void SpawnPlayer()
-    {
-        Instantiate(playerPrefab, playerSpawnPoint.position, Quaternion.identity);
-    }
-    */
 
     private void SpawnEnemies()
     {
@@ -40,17 +38,29 @@ public class SpawnManager : MonoBehaviour
         foreach (Transform spawnPoint in enemySpawnPoints)
         {
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-
+            /*
             if (Random.Range(0f, 100f) <= 30f)
             {
                 GameObject weapon_pickup = Instantiate(weapon, spawnPoint.position + new Vector3(Random.Range(-0.3f, 0.3f), -0.5f, 0f), Quaternion.identity);
             }
-
+            */
             enemy.GetComponent<EnemyMovement>().screen_shake = screen_shake;
             spawnedEnemies.Add(enemy);
             Debug.Log("Spawned enemy at " + spawnPoint.position);
         }
     }
+
+    private void SpawnGroundItems()
+    {
+        Debug.Log("Spawning ground items...");
+        foreach (Transform spawnPoint in groundItemSpawnPoints)
+        {
+            GameObject groundItem = Instantiate(groundItemPrefab, spawnPoint.position, Quaternion.identity);
+            spawnedGroundItems.Add(groundItem);
+            Debug.Log("Spawned ground item at " + spawnPoint.position);
+        }
+    }
+
 
     public void DeactivateRoom()
     {
