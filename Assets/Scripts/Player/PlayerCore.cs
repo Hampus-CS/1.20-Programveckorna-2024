@@ -40,7 +40,7 @@ public class PlayerCore : MonoBehaviour
         thePlayerAttack = gameObject.GetComponent<PlayerAttack>();
 
         currentState = 0;
-        playerHealth = 3;
+        playerHealth = 5;
     }
 
     // Update is called once per frame
