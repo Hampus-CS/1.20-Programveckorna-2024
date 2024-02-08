@@ -53585,8 +53585,8 @@ MonoBehaviour:
 --- !u!1 &236140192
 GameObject:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 3908014214015825026, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-  m_PrefabInstance: {fileID: 7780983544550233560}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
@@ -53603,8 +53603,8 @@ GameObject:
 --- !u!224 &236140193
 RectTransform:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-  m_PrefabInstance: {fileID: 7780983544550233560}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236140192}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -53622,8 +53622,8 @@ RectTransform:
 --- !u!114 &236140194
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6328259243359135394, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-  m_PrefabInstance: {fileID: 7780983544550233560}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236140192}
   m_Enabled: 1
@@ -53653,18 +53653,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "CREDITS (Press Space to Continue)\n\nHampus Carlstr\xF6m Svanberg: Github
-    Consultant, Bug Fixes, Room System, Spawning System, Menu System, Sound System.\n\nElmer
-    Sunnabo: UI, Enemy AI/Enemy Combat, Project Leader, Blocking, Sound Effects,
-    Weapon System, Item System, Drawing Animations. \n\nEskil Cerin: Movement, Combat,
-    Special Effects, Light System, Implemented Animations in the game, Boss Fight.\n\nCharlie
-    Buhre H\xE4gglund: Level Design, Object Placement, Vice-Project Leader, Play
-    Tester.\n\nLukas M\xF6llelyd och Blenda R\xF6nnmark: Graphics, (Lukas) Musik,
-    tileset. (Blenda) Characters, Weapons."
+    Consultant, Room System, Spawning System, Menu System, Sound System and Bug Fixer.\n\nElmer
+    Sunnabo: Project Leader, UI, Enemy AI/Enemy Combat, Blocking, Sound Effects,
+    Weapon System, Item System, Lighting, some animations and tiles. \n\nCharlie
+    Buhre H\xE4gglund: Vice-Project Leader, Level Design, Object Placement and Play
+    Tester.\n\nEskil Cerin: Movement, Combat, Special Effects, Light System, Animation
+    System and Bonus Fight.\n\nBlenda R\xF6nnmark: Characters, Character animations
+    and Weapons.\n\n\nLukas M\xF6llelyd: Tileset and Music"
 --- !u!222 &236140195
 CanvasRenderer:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6254237317533966027, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-  m_PrefabInstance: {fileID: 7780983544550233560}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236140192}
   m_CullTransparentMesh: 1
@@ -123135,7 +123135,7 @@ GameObject:
   - component: {fileID: 1756603400}
   - component: {fileID: 1756603402}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Credits-Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139575,127 +139575,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1001 &7780983544550233560
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1756603399}
-    m_Modifications:
-    - target: {fileID: 3908014214015825026, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_Name
-      value: Credits
-      objectReference: {fileID: 0}
-    - target: {fileID: 3908014214015825026, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6328259243359135394, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_Text
-      value: "CREDITS (Press Space to Continue)\n\nHampus Carlstr\xF6m Svanberg:
-        Github Consultant, Bug Fixes, Room System, Spawning System, Menu System,
-        Sound System.\n\nElmer Sunnabo: UI, Enemy AI/Enemy Combat, Project Leader,
-        Blocking, Sound Effects, Weapon System, Item System, Drawing Animations.
-        \n\nEskil Cerin: Movement, Combat, Special Effects, Light System, Implemented
-        Animations in the game, Boss Fight.\n\nCharlie Buhre H\xE4gglund: Level Design,
-        Object Placement, Vice-Project Leader, Play Tester.\n\nLukas M\xF6llelyd
-        och Blenda R\xF6nnmark: Graphics, (Lukas) Musik, tileset. (Blenda) Characters,
-        Weapons."
-      objectReference: {fileID: 0}
-    - target: {fileID: 6328259243359135394, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_FontData.m_MinSize
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6328259243359135394, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_FontData.m_FontSize
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 590
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 420
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -24
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7818782583479603272, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 26bc884aa46ad9f4b9479c5d72cc2ea3, type: 3}
 --- !u!1 &7788612428362812819
 GameObject:
   m_ObjectHideFlags: 0
