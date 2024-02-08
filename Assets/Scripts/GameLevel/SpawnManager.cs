@@ -38,12 +38,6 @@ public class SpawnManager : MonoBehaviour
         foreach (Transform spawnPoint in enemySpawnPoints)
         {
             GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
-            /*
-            if (Random.Range(0f, 100f) <= 30f)
-            {
-                GameObject weapon_pickup = Instantiate(weapon, spawnPoint.position + new Vector3(Random.Range(-0.3f, 0.3f), -0.5f, 0f), Quaternion.identity);
-            }
-            */
             enemy.GetComponent<EnemyMovement>().screen_shake = screen_shake;
             spawnedEnemies.Add(enemy);
             Debug.Log("Spawned enemy at " + spawnPoint.position);
@@ -56,6 +50,14 @@ public class SpawnManager : MonoBehaviour
         foreach (Transform spawnPoint in groundItemSpawnPoints)
         {
             GameObject groundItem = Instantiate(groundItemPrefab, spawnPoint.position, Quaternion.identity);
+            if (Random.Range(0, 100) <= 50)
+            {
+                groundItem.GetComponent<GroundItem>().ThisItemID = 1;
+            }
+            else
+            {
+                groundItem.GetComponent<GroundItem>().ThisItemID = 2;
+            }
             spawnedGroundItems.Add(groundItem);
             Debug.Log("Spawned ground item at " + spawnPoint.position);
         }
