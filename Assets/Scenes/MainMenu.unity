@@ -3805,8 +3805,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -117.83197, y: 125}
-  m_SizeDelta: {x: 954.822, y: 1080}
+  m_AnchoredPosition: {x: -119.87311, y: 125}
+  m_SizeDelta: {x: 958.9043, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1298894531
 MonoBehaviour:
@@ -3829,13 +3829,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "CREDITS (Press Space to Continue)\n\nHampus Carlstr\xF6m Svanberg: Github
-    Consultant, Bug Fixes, Room System, Spawning System, Menu System, Sound System.\n\nElmer
-    Sunnabo: UI, Enemy AI/Enemy Combat, Project Leader, Blocking, Sound Effects,
-    Weapon System, Item System, Drawing Animations. \n\nEskil Cerin: Movement, Combat,
-    Special Effects, Light System, Implemented Animations in the game, Boss Fight.\n\nCharlie
-    Buhre H\xE4gglund: Level Design, Object Placement, Vice-Project Leader, Play
-    Tester.\n\nLukas M\xF6llelyd och Blenda R\xF6nnmark: Graphics, (Lukas) Musik,
-    tileset. (Blenda) Characters, Weapons."
+    Consultant, Room System, Spawning System, Menu System, Sound System and Bug Fixer.\n\nElmer
+    Sunnabo: Project Leader, UI, Enemy AI/Enemy Combat, Blocking, Sound Effects,
+    Weapon System, Item System, Lighting, some animations and tiles. \n\nCharlie
+    Buhre H\xE4gglund: Vice-Project Leader, Level Design, Object Placement and Play
+    Tester.\n\nEskil Cerin: Movement, Combat, Special Effects, Light System, Animation
+    System and Bonus Fight.\n\nBlenda R\xF6nnmark: Characters, Character animations
+    and Weapons.\n\n\nLukas M\xF6llelyd: Tileset and Music"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3862,8 +3862,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41
-  m_fontSizeBase: 41
+  m_fontSize: 39
+  m_fontSizeBase: 39
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
