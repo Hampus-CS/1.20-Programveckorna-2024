@@ -65,8 +65,8 @@ public class BossMovement : MonoBehaviour
     //3: Attacking
     //4: Waiting to jump
     //5: destroys train
-    public int hp = 30;
-    public int max_hp = 30;
+    public int hp = 40;
+    public int max_hp = 40;
     int phase = 0;
     //bool hit = false;
 
@@ -90,7 +90,7 @@ public class BossMovement : MonoBehaviour
         health_bar.value = hp;
         health_bar.maxValue = max_hp;
 
-        if(hp <= 20 && phase == 0)
+        if(hp <= max_hp-(max_hp/3) && phase == 0)
         {
             state = 5;
             timer = 240;
@@ -118,7 +118,7 @@ public class BossMovement : MonoBehaviour
             phase = 1;
         }
 
-        if (hp <= 10 && phase == 1)
+        if (hp <= max_hp/3 && phase == 1)
         {
             state = 5;
             timer = 240;
@@ -169,21 +169,21 @@ public class BossMovement : MonoBehaviour
             {
                 if (grounded == false)
                 {
+                    if (player.GetComponent<PlayerCore>().IsGrounded() && flash == 0f)
+                    {
+                        GameObject Attack = Instantiate(BatSwing, new Vector2(player_transform.position.x, player_transform.position.y + 1), Quaternion.identity);
+                    }
+
                     screen_shake.GetComponent<CameraController>().shake = 25f;
                     if (train_1_choosen == false) train_1.GetComponent<Flash>().flash = 15f;
                     if (train_2_choosen == false) train_2.GetComponent<Flash>().flash = 15f;
                     if (train_3_choosen == false) train_3.GetComponent<Flash>().flash = 15f;
                     flash = 15f;
 
-                    if (player.GetComponent<PlayerCore>().IsGrounded())
-                    {
-                        GameObject Attack = Instantiate(BatSwing, new Vector2(player_transform.position.x, player_transform.position.y + 1), Quaternion.identity);
-                    }
-
                     sprite.GetComponent<Scale>().scale_x = 1.25f;
                     sprite.GetComponent<Scale>().scale_y = 0.75f;
 
-                    timer = 40;
+                    timer = 100-(40*phase);
                     state = 4;
                 }
 
@@ -195,7 +195,7 @@ public class BossMovement : MonoBehaviour
             {
                 if (state == 1)
                 {
-                    if (transform.position.y >= 15f)
+                    if (transform.position.y >= 12f)
                     {
                         transform.position = new Vector2(position_target.x + Random.Range(-1, 1), 12f);
                         rb.velocity = new Vector2(rb.velocity.x, 0f);
@@ -264,6 +264,7 @@ public class BossMovement : MonoBehaviour
                 sprite.GetComponent<Scale>().scale_x = 0.5f;
                 sprite.GetComponent<Scale>().scale_y = 1.5f;
                 rb.velocity = new Vector2(rb.velocity.x, 60f);
+                timer = 0;
 
                 state = 1;
             }
@@ -390,6 +391,7 @@ public class BossMovement : MonoBehaviour
                 sprite.GetComponent<Scale>().scale_x = 0.5f;
                 sprite.GetComponent<Scale>().scale_y = 1.5f;
                 rb.velocity = new Vector2(rb.velocity.x, 60f);
+                timer = 0;
             }
 
             state = 1;
@@ -530,6 +532,7 @@ public class BossMovement : MonoBehaviour
             sprite.GetComponent<Scale>().scale_x = 0.5f;
             sprite.GetComponent<Scale>().scale_y = 1.5f;
             rb.velocity = new Vector2(rb.velocity.x, 60f);
+            timer = 0;
 
             state = 1;
         }
